@@ -1,0 +1,109 @@
+<%- contentFor('HeaderCss') %>
+
+    <%- contentFor('breadcrumb') %>
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0">Pages</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="/admin/pages">Pages</a></li>
+                            <li class="breadcrumb-item active">Edit</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <%- contentFor('body') %>
+
+        <% if (message!="" ) { %>
+            <div class="alert alert-success">
+                <%= message  %>
+            </div>
+        <% } %>
+        <% if (error!="") { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Edit Page</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/admin/page/update" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="title">Title <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Enter Page Title" id="title" name="title" value="<%= page.title %>" required >
+                                    </div>
+                                </div>
+                                <div class="col-md-6"></div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="metakeywords">Meta Keywords</label>
+                                        <input type="text" class="form-control" placeholder="Enter Meta Keywords" id="metakeywords" name="metakeywords" value="<%= page.metakeywords %>" >
+                                    </div>
+                                </div>
+                                <div class="col-md-6"></div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="metadescription">Meta Description</label>
+                                        <textarea type="email" class="form-control" placeholder="Enter Meta Description" id="metadescription" name="metadescription" row="3" ><%= page.metadescription %></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6"></div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="page_image">Banner image</label>
+                                        <% if(page.banner!="" && page.banner!=null){%>
+                                            <div class="image-container"> <div class="inner"><a href="/admin/page/delete-image/<%= page.id %>" class="delete-btn" >X</a><img src="<%= page.banner %>" width="200" /></div></div>
+                                        <% }%>
+                                        <input type="file" class="form-control"  id="page_image" name="page_image">
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="content">Description <span class="text-danger">*</span></label>
+                                        <textarea type="text" class="form-control ckeditor-classic"  id="content" name="content" required><%= page.content %></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"></div>
+                                
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-md-6 text-left">
+                                    <a href="/admin/pages" class="btn btn-secondary w-md">Back</a>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <input type="hidden" id="id" name="id" value="<%= page.id %>">
+                                    <button type="submit" class="btn btn-primary w-md float-end">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Form Layout -->
+
+
+    <%- contentFor('FooterJs') %>
+    <%- contentFor('BottomJs') %>
+    <!--ckeditor init js -->
+    <!-- ckeditor -->
+    <!--<script src="/assets/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
+    <script type="text/javascript">
+        ClassicEditor.create(document.querySelector(".ckeditor-classic")).then(function(e){e.ui.view.editable.element.style.height="200px"}).catch(function(e){console.error(e)});
+    </script>-->

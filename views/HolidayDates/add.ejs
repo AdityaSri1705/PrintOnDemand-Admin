@@ -1,0 +1,87 @@
+<%- contentFor('HeaderCss') %>
+
+    <%- contentFor('breadcrumb') %>
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0"><%= holidayData.title %></h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="/admin/holidays/?type_filter=<%= holidayData.holiday_type %>">Holidays</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/holiday-dates/<%= holidayData.id %>">Holiday dates</a></li>
+                            <li class="breadcrumb-item active">Add</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <%- contentFor('body') %>
+
+        <% if (message!="" ) { %>
+            <div class="alert alert-success">
+                <%= message  %>
+            </div>
+        <% } %>
+        <% if (error!="") { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% } %>
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Add Holiday Date</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/admin/holiday-date/save" method="post"  >
+                            <% for(i=1; i<=10; i++){%>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="title">Title<%= i %> <% if(i==1){ %><span class="text-danger">*</span><% } %></label>
+                                        <input type="text" class="form-control" placeholder="Enter title" id="title" name="title" value="" <% if(i==1){ %>required<% }%> >
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="event_date">Date<%= i %> <% if(i==1){ %><span class="text-danger">*</span><% } %></label>
+                                        <input type="date" class="form-control" placeholder="Enter holiday date" id="event_date" name="event_date" value="" <% if(i==1){ %>required<% }%> >
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="subtitle">Subtitle<%= i %></label>
+                                        <input type="text" class="form-control" placeholder="Enter subtitle" id="subtitle" name="subtitle" value="" >
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                            <div class="row">
+                                <div class="col-md-6 text-left">
+                                    <a href="/admin/holiday-dates/<%= holidayData.id %>" class="btn btn-secondary w-md">Back</a>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <input type="hidden" id="holiday_id" name="holiday_id" value="<%= holidayData.id %>" >
+                                    <button type="submit" class="btn btn-primary w-md float-end">Submit</button>
+                                </div>
+                            </div>
+                            
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Form Layout -->
+
+
+    <%- contentFor('FooterJs') %>
+    <%- contentFor('BottomJs') %>

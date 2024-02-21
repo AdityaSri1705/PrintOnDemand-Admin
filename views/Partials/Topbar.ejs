@@ -1,0 +1,49 @@
+<header id="page-topbar" class="isvertical-topbar">
+    <div class="navbar-header">
+        <div class="d-flex">
+            <!-- LOGO -->
+            <div class="navbar-brand-box">
+                <a href="/" class="logo logo-dark">
+                    <span class="logo-sm">
+                        <img src="/assets/images/logo.png" alt="" height="100">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="/assets/images/logo.png" alt="" height="100">
+                    </span>
+                </a>
+
+                <a href="/" class="logo logo-light">
+                    <span class="logo-sm">
+                        <img src="/assets/images/logo.png" alt="" height="100">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="/assets/images/logo.png" alt="" height="100">
+                    </span>
+                </a>
+                
+            </div>
+
+            <button type="button" class="btn btn-sm px-3 font-size-16 header-item vertical-menu-btn">
+                <i class="fa fa-fw fa-bars"></i>
+            </button>
+
+          
+        </div>
+
+        <div class="d-flex">
+
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item user text-start d-flex align-items-center" id="page-header-user-dropdown"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle header-profile-user" src="<%- currentUser.image %>"
+                    alt="Header Avatar">
+                </button>
+                <div class="dropdown-menu dropdown-menu-end pt-0">
+                    <a class="dropdown-item" href="/admin/profile"><i class='bx bx-user-circle text-muted font-size-18 align-middle me-1'></i> <span class="align-middle">My Profile</span></a>
+                    <a class="dropdown-item" href="/admin/change-password"><i class='bx bx-key text-muted font-size-18 align-middle me-1'></i> <span class="align-middle">Change Password</span></a>
+                    <a class="dropdown-item" href="/logout"><i class='bx bx-log-out text-muted font-size-18 align-middle me-1'></i> <span class="align-middle"><%=translation.Logout%></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,124 @@
+<%- contentFor('HeaderCss') %>
+
+    <%- contentFor('breadcrumb') %>
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0">Calendar Templates</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="/admin/calendar/?layout_filter=<%= layout_filter %>">Calendar Templates</a></li>
+                            <li class="breadcrumb-item active">Add</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <%- contentFor('body') %>
+
+        <% if (message!="" ) { %>
+            <div class="alert alert-success">
+                <%= message  %>
+            </div>
+        <% } %>
+        <% if (error!="") { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% } %>
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Add template</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/admin/calendar/save" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="layout_id">Layout <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="layout_id" name="layout_id" >
+                                            <% layoutList.forEach(layout =>{ %>
+                                                <option value="<%= layout.id %>" <%= layout_filter==layout.id ? 'selected':'' %>><%= layout.title %></option>
+                                            <% }); %>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="title">Title <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Enter title" id="title" name="title" value="" required >
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="image1">Left Image</label>
+                                        <input type="file" class="form-control"  id="image1" name="image1">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="image2">Right Image</label>
+                                        <input type="file" class="form-control"  id="image2" name="image2">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="print_image1">Print Left Image</label>
+                                        <input type="file" class="form-control"  id="print_image1" name="print_image1">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="print_image2">Print Right Image</label>
+                                        <input type="file" class="form-control"  id="print_image2" name="print_image2">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label me-3" for="isDefault" >Default</label>
+                                        <div class="form-check form-switch form-switch-md mb-3" dir="ltr">
+                                            <input type="checkbox" class="form-check-input slide-status" id="isDefault" name="isDefault"  value="1">
+                                            <label class="form-check-label" for="customSwitch1" id="isDefaultLabel">Yes</label>
+                                        </div>  
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 text-left">
+                                    <a href="/admin/calendar/?layout_filter=<%= layout_filter %>" class="btn btn-secondary w-md">Back</a>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <button type="submit" class="btn btn-primary w-md float-end">Submit</button>
+                                </div>
+                            </div>
+                            
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Form Layout -->
+
+
+    <%- contentFor('FooterJs') %>
+    <%- contentFor('BottomJs') %>
+    <script>
+        jQuery(document).ready(function() {
+            $("#isDefault").on('change', function(event){
+                var status= ($(this).prop('checked'))? 'Yes':'No';
+                $("#isDefaultLabel").html(status);
+            });
+           
+        });
+    </script>

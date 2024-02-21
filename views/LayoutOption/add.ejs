@@ -1,0 +1,136 @@
+<%- contentFor('HeaderCss') %>
+
+    <%- contentFor('breadcrumb') %>
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0">Layout Options</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="/admin/layouts">Layouts</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/layout/sections/<%= layoutData.id %>">Section</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/layout/options/<%= layoutData.id %>">Options</a></li>
+                            <li class="breadcrumb-item active">Add</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <%- contentFor('body') %>
+
+        <% if (message!="" ) { %>
+            <div class="alert alert-success">
+                <%= message  %>
+            </div>
+        <% } %>
+        <% if (error!="") { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% } %>
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Add Layout Option</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/admin/layout/option/save" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                        
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="section_id">Section<span class="text-danger">*</span></label>
+                                        <select class="form-control" id="section_id" name="section_id" >
+                                            <% sectionList.forEach(section =>{ %>
+                                                <option value="<%= section.id %>" ><%= section.section_title %></option>
+                                            <% }); %>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="title">Title <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Enter title" id="title" name="title" value="" required >
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="opttype">Type <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="opttype" name="opttype" >
+                                            <option value="Radio" >Radio button</option>
+                                            <option value="Checkbox" >Checkbox</option>
+                                            <option value="Custom" >Custom</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="left_image"> Left Image</label>
+                                        <input type="file" class="form-control"  id="left_image" name="left_image">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="right_image"> Right Image</label>
+                                        <input type="file" class="form-control"  id="right_image" name="right_image">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="print_left_image">Print Left Image</label>
+                                        <input type="file" class="form-control"  id="print_left_image" name="print_left_image">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="print_right_image">Print Right Image</label>
+                                        <input type="file" class="form-control"  id="print_right_image" name="print_right_image">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="hint">Hint </label>
+                                        <input type="text" class="form-control" placeholder="Enter hint" id="hint" name="hint" value="" >
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 text-left">
+                                    <a href="/admin/layout/options/<%= layoutData.layout_id %>" class="btn btn-secondary w-md">Back</a>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <input type="hidden" name="layout_id" value="<%= layoutData.id %>" />
+                                    <button type="submit" class="btn btn-primary w-md float-end">Submit</button>
+                                </div>
+                            </div>
+                            
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Form Layout -->
+
+
+    <%- contentFor('FooterJs') %>
+    <%- contentFor('BottomJs') %>
+    <script>
+        jQuery(document).ready(function() {
+            $("#isDefault").on('change', function(event){
+                var status= ($(this).prop('checked'))? 'Yes':'No';
+                $("#isDefaultLabel").html(status);
+            });
+           
+        });
+        
+    </script>

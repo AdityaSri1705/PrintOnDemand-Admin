@@ -1,0 +1,944 @@
+<html>
+    <head>
+     
+        <style>
+            @font-face {
+                font-family: 'JosefinSans';
+                src: url('http://localhost:8000/assets/pdf_fonts/JosefinSans-Regular.ttf') format('truetype');
+            }
+            @font-face {
+                font-family: 'PTSans';
+                src: url('http://localhost:8000/assets/pdf_fonts/PTSans-Regular.ttf') format('truetype');    
+            }
+            body {
+               font-family: Arial, sans-serif;
+               background-color: #FFFFFF;
+            }
+            .step3Container {
+               width: 2250px;
+               height: 3000px;
+               background: #fff;
+               position: relative;
+               display: flex;
+               flex-direction: row;
+               justify-content: center;
+               margin: 0 auto;
+               break-after: page;
+            }
+            .st3Coverdiv {
+               display: flex;
+               flex-direction: row;
+               width: 100%;
+               height: 100%;
+               position: relative;
+            }
+            .st3page {
+                width: 100%;
+                position: relative;
+            }
+            .leftpage .st3page{
+                margin: 28px 66px 28px 28px
+            }
+            .rightpage .st3page{
+                margin: 28px 28px 28px 66px
+            }
+            
+            .PageSubImages {
+                width: auto;
+                height: auto;
+            }
+            .LPLeft {
+                position: absolute;
+                left: 0;
+            }
+            .LPRight {
+                position: absolute;
+                right: 0;
+            }
+            .RPLeft {
+                position: absolute;
+                left: 0;
+            }
+            .RPRight {
+                position: absolute;
+                right: 0;
+                left: auto !important;
+            }
+            .PBottom {
+                bottom: 0;
+            }
+            .WeeklyView-B0 {
+                top: 0;
+                width: 48%;
+                height: 9%;
+                display: flex;
+                align-items: center;
+            }
+        
+            .WeeklyView-B1 {
+                top: 0;
+                right: 0;
+                width: 49.4%;
+                height: 8.5%;
+            }
+            .WeeklyView-B2 {
+                top: 10%;
+                left: 0;
+                width: 100%;
+                height: 14.5%;
+            }
+            .WeeklyView-B3-left {
+                bottom: 0;
+                left: 0;
+                width: 26.8%;
+                height: 68.6%;
+                overflow: hidden;
+            }
+            .WeeklyView-B3 {
+            /* top: 28%; */
+                bottom: 0;
+                width: 56%;
+                height: 68.6%;
+            }
+            .WeeklyView-B4 {
+                width: 48%;
+                height: 13%;
+                display: none;
+            }
+            .WeeklyView-B5 {
+                width: 48%;
+                height: 17%;
+                display: none;
+            }
+            .WeeklyView-B6 {
+                top: 0;
+                width: 49.4%;
+                height: 8.5%;
+            }
+            .WeeklyView-B7 {
+                top: 0;
+                width: 49.4%;
+                height: 8.5%;
+            }
+            .WeeklyView-B8 {
+                top: 10%;
+                width: 100%;
+                height: 14.5%;
+            }
+            .WeeklyView-B9 {
+                bottom: 0;
+                width: 56%;
+                height: 68.8%;
+            }
+            .WeeklyView-B9-right {
+                top: 27.5%;
+                width: 27.8%;
+                height: 54%;
+                overflow: hidden;
+            }
+            .T1 .WeeklyView-B10 {
+                width: 49.4%;
+                height: 18.7%;
+                left: 0 !important;
+                bottom: 0;
+            }
+            .T2 .WeeklyView-B10 {
+                width: 27.5%;
+                height: 14.5%;
+                bottom: 0;
+            }
+        
+            .T2 .WeeklyView-B11 {
+                display: none;
+            }
+            .T1 .WeeklyView-B11 {
+                width: 49.4%;
+                height: 18.7%;
+                bottom: 0;
+            }
+            .T1 .WeeklyView-B2,
+            .T5 .WeeklyView-B2,
+            .T6 .WeeklyView-B2,
+            .T1 .WeeklyView-B8,
+            .T5 .WeeklyView-B8,
+            .T6 .WeeklyView-B1,
+            .T6 .WeeklyView-B7,
+            .T6 .WeeklyView-B8 {
+                display: none;
+            }
+            .T2 .WeeklyView-B3 {
+                bottom: 0;
+                width: 66.4%;
+                height: 75%;
+            }
+            .T2 .WeeklyView-B3-left {
+                bottom: 0;
+                left: 0;
+                width: 32.4%;
+                height: 75%;
+                overflow: hidden;
+            }
+            .T2 .WeeklyView-B9 {
+                top: 25%;
+                width: 66.4%;
+                height: 75%;
+            }
+            .T2 .WeeklyView-B9-right {
+                top: 25%;
+                left: 0;
+                width: 32.4%;
+                height: 58%;
+                overflow: hidden;
+            }
+            .T1 .WeeklyView-B3 {
+                height: 90.5%;
+                width: 66%;
+                top: 9.5%;
+            }
+            .T1 .WeeklyView-B3-left {
+                top: 9.5%;
+                left: 0;
+                width: 32.4%;
+                height: 90.5%;
+            }
+            .T1 .WeeklyView-B9 {
+                top: 10%;
+                height: 70.2%;
+                width: 66%;
+            }
+            .T1 .WeeklyView-B9-right {
+                top: 10%;
+                height: 68.2%;
+                width: 32.4%;
+            }
+        
+            .T3 .WeeklyView-B3-left,
+            .T4 .WeeklyView-B3-left,
+            .T5 .WeeklyView-B3-left,
+            .T6 .WeeklyView-B3-left,
+            .T3 .WeeklyView-B9-right,
+            .T4 .WeeklyView-B9-right,
+            .T5 .WeeklyView-B9-right,
+            .T6 .WeeklyView-B9-right {
+                display: none;
+            }
+            .T5 .WeeklyView-B7 {
+                display: block;
+            }
+            .T3 .WeeklyView-B3,
+            .T4 .WeeklyView-B3,
+            .T5 .WeeklyView-B3,
+            .T6 .WeeklyView-B3,
+            .T3 .WeeklyView-B9,
+            .T4 .WeeklyView-B9,
+            .T5 .WeeklyView-B9,
+            .T6 .WeeklyView-B9 {
+                width: 100%;
+            }
+        
+            .T3 .WeeklyView-B10,
+            .T4 .WeeklyView-B10,
+            .T5 .WeeklyView-B10 {
+                position: absolute;
+                left: 0;
+                width: 44%;
+                height: 16%;
+                bottom: 0;
+            }
+            .T3 .WeeklyView-B11,
+            .T4 .WeeklyView-B11,
+            .T5 .WeeklyView-B11 {
+                display: none;
+            }
+            .T5 .WeeklyView-B2,
+            .T6 .WeeklyView-B2,
+            .T5 .WeeklyView-B8,
+            .T6 .WeeklyView-B8 {
+                top: 10%;
+                height: 88%;
+            }
+            .T3 .WeeklyView-B3,
+            .T4 .WeeklyView-B3,
+            .T3 .WeeklyView-B9,
+            .T4 .WeeklyView-B9 {
+                bottom: 0;
+                width: 100%;
+                height: 74.8%;
+            }
+            .T5 .WeeklyView-B3,
+            .T5 .WeeklyView-B9 {
+                top: 12%;
+                height: 88%;
+            }
+            .T3 .WeeklyView-B10,
+            .T4 .WeeklyView-B10,
+            .T5 .WeeklyView-B10 {
+                height: 11%;
+                right: 0 !important;
+                width: 32.3%;
+            }
+            .T6 .WeeklyView-B0 {
+                height: 7%;
+            }
+            .T6 .WeeklyView-B3 {
+                top: 12%;
+                height: 68%;
+                left: 0;
+            }
+            .T6 .WeeklyView-B4 {
+                bottom: 0;
+                height: 14.5%;
+                display: block;
+            }
+            .T6 .WeeklyView-B5 {
+                bottom: 0;
+                height: 14.5%;
+                display: block;
+            }
+            .T6 .WeeklyView-B6 {
+                height: 9%;
+                width: 100%;
+            }
+            .T6 .WeeklyView-B9 {
+                top: 12%;
+                height: 68%;
+            }
+            .T6 .WeeklyView-B10 {
+                left: 0 !important;
+                width: 48%;
+                bottom: 0;
+                height: 14.5%;
+            }
+            .T6 .WeeklyView-B11 {
+                width: 48%;
+                bottom: 0;
+                height: 14.5%;
+            }
+        
+            .WeeklyViewCustomText {
+                font-size: 15px !important;
+                position: absolute;
+                top: -2px;
+                left: 0px;
+                color: #212121;
+                font-family: "JosefinSans" !important;
+                font-style: normal;
+                font-weight: 700 !important;
+                line-height: normal !important;
+                word-wrap: break-word;
+                text-transform: uppercase;
+            }
+            .WeeklyView-B3 .WeeklyDateBTitle,
+            .WeeklyView-B9 .WeeklyDateBTitle {
+                font-size: 18px !important;
+                font-weight: 400;
+            }
+            .WeeklyDateDTitle {
+                font-size: 12px !important;
+                color: #212121;
+                font-family: "JosefinSans" !important;
+                font-style: normal;
+                line-height: normal !important;
+                margin-right: 2px !important;
+            }
+        
+        
+            .WeeklyDateNTitle {
+                font-size: 12px !important;
+                color: #212121;
+                font-family: "JosefinSans" !important;
+                font-style: normal;
+                line-height: normal !important;
+                text-transform: uppercase;
+            }
+            .rightpage .WeeklyDateNTitle {
+                margin-right: 2px;
+            }
+            .rightpage .WeeklyDateDTitle {
+                margin-right: 0 !important;
+            }
+        
+            .d1 {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: #fff;
+                display: flex;
+                align-items: baseline;
+                width: 25%;
+            }
+            .d2 {
+                position: absolute;
+                top: 32%;
+                left: 0;
+                background: #fff;
+                display: flex;
+                align-items: baseline;
+                width: 25%;
+            }
+            .d3 {
+                position: absolute;
+                top: 63%;
+                left: 0;
+                background: #fff;
+                display: flex;
+                align-items: baseline;
+                width: 25%;
+            }
+            .d4 {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: none;
+                background: #fff;
+                align-items: baseline;
+                width: 25%;
+            }
+            .d5 {
+                position: absolute;
+                top: 0;
+                right: 0;
+                background: #fff;
+                display: flex;
+                align-items: baseline;
+                width: 24%;
+                justify-content: right;
+            }
+            .d6 {
+                position: absolute;
+                top: 32%;
+                right: 0;
+                background: #fff;
+                display: flex;
+                align-items: baseline;
+                width: 24%;
+                justify-content: right;
+            }
+            .d7 {
+                position: absolute;
+                top: 63%;
+                right: 0;
+                background: #fff;
+                display: flex;
+                align-items: baseline;
+                width: 24%;
+                justify-content: right;
+            }
+            .d8 {
+                position: absolute;
+                top: 0;
+                right: 0;
+                display: none;
+                background: #fff;
+                width: 24%;
+                justify-content: right;
+            }
+        
+            .T2 .d1 {
+                top: 1%;
+            }
+            .T2 .d2 {
+                top: 35%;
+            }
+            .T2 .d3 {
+                top: 69%;
+            }
+            .T2 .d5 {
+                top: 1%;
+            }
+            .T2 .d6 {
+                top: 35%;
+            }
+            .T2 .d7 {
+                top: 69%;
+                right: 51%;
+            }
+            .T2 .d8 {
+                top: 69%;
+                right: 0;
+                display: flex;
+            }
+        
+            .T1 .d1 {
+                top: 2%;
+                left: 0;
+            }
+            .T1 .d2 {
+                top: 27%;
+                left: 0;
+            }
+            .T1 .d3 {
+                top: 52%;
+                left: 0;
+            }
+            .T1 .d4 {
+                display: flex;
+                top: 77%;
+                left: 0;
+            }
+            .T1 .d5 {
+                top: 2%;
+            }
+            .T1 .d6 {
+                top: 34%;
+            }
+            .T1 .d7 {
+                top: 67%;
+            }
+        
+            .T3 .d1,
+            .T4 .d1,
+            .T5 .d1 {
+                top: 2%;
+            }
+            .T3 .d2,
+            .T4 .d2,
+            .T5 .d2 {
+                top: 2%;
+                left: 34%;
+            }
+            .T3 .d3,
+            .T4 .d3,
+            .T5 .d3 {
+                top: 2%;
+                left: 68%;
+            }
+            .T3 .d5,
+            .T4 .d5,
+            .T5 .d5 {
+                top: 2%;
+                right: 68%;
+            }
+            .T3 .d6,
+            .T4 .d6,
+            .T5 .d6 {
+                top: 2%;
+                right: 34%;
+            }
+            .T3 .d7,
+            .T4 .d7,
+            .T5 .d7 {
+                top: 2%;
+                right: 0%;
+            }
+            .T3 .d8,
+            .T4 .d8 {
+                top: 45%;
+                display: flex;
+                right: 2%;
+            }
+            .T5 .d8 {
+                top: 46.5%;
+                display: flex;
+            }
+        
+            .T6 .d1 {
+                top: 1%;
+            }
+            .T6 .d2 {
+                top: 1%;
+                left: 25%;
+            }
+            .T6 .d3 {
+                top: 1%;
+                left: 50.5%;
+            }
+            .T6 .d4 {
+                top: 1%;
+                left: 76%;
+                display: flex;
+            }
+            .T6 .d5 {
+                top: 1%;
+                right: 76%;
+            }
+            .T6 .d6 {
+                top: 1%;
+                right: 51%;
+            }
+            .T6 .d7 {
+                top: 1%;
+                right: 25%;
+            }
+            .WeeklyDateBTitle {
+                color: #212121;
+                font-family: JosefinSans !important;
+                font-size: 18px !important;
+                font-style: normal;
+                font-weight: 700 !important;
+                line-height: normal !important;
+                text-transform: uppercase;
+            }
+            .WeeklyDateBTitle.space{
+                margin: 0px 0px 0px 5px;
+            }
+            .WeeklyDateSTitle {
+                color: #212121;
+                font-family: JosefinSans !important;
+                font-size: 18px !important;
+                font-style: normal;
+                font-weight: 700 !important;
+                line-height: normal !important;
+                text-transform: uppercase;
+                margin: 0px 0px 0px 8px;
+            }
+            .WeeklyCdate{
+                display: flex;
+            }
+        
+        
+            .T1.BlockTime .d1 {
+                top: 2%;
+            }
+            .T1.BlockTime .d2 {
+                top: 27%;
+            }
+            .T1.BlockTime .d3 {
+                top: 52%;
+            }
+            .T1.BlockTime .d4 {
+                top: 77%;
+            }
+            .T1.BlockTime .d5 {
+                top: 2%;
+            }
+            .T1.BlockTime .d6 {
+                top: 34%;
+            }
+            .T1.BlockTime .d7 {
+                top: 67%;
+            }
+        
+            .T2.BlockTime .d1 {
+                top: 0;
+            }
+            .T2.BlockTime .d2 {
+                top: 34%;
+            }
+        
+            .T2.BlockTime .d3 {
+                top: 68%;
+            }
+            .T2.BlockTime .d6 {
+                top: 33%;
+                right: 3%;
+            }
+            .T2.BlockTime .d8 {
+                top: 67%;
+                right: 3%;
+            }
+        
+            .T2.BlockTime .d5 {
+                top: 0;
+                right: 3%;
+            }
+            .T2.BlockTime .d7 {
+                top: 67%;
+                right: 53%;
+            }
+        
+            .QuoteText {
+                margin-bottom: 0% !important;
+                line-height: 100% !important;
+            }
+            .T5.BlockTime .d8 {
+                top: 46%;
+                right: 4%;
+                display: flex;
+            }
+        
+            .T3.BlockTime .d1,
+            .T4.BlockTime .d1,
+            .T5.BlockTime .d1,
+            .T3.BlockTime .d2,
+            .T4.BlockTime .d2,
+            .T5.BlockTime .d2,
+            .T3.BlockTime .d3,
+            .T4.BlockTime .d3,
+            .T5.BlockTime .d3,
+            .T3.BlockTime .d5,
+            .T4.BlockTime .d5,
+            .T5.BlockTime .d5,
+            .T3.BlockTime .d6,
+            .T4.BlockTime .d6,
+            .T5.BlockTime .d6,
+            .T3.BlockTime .d7,
+            .T4.BlockTime .d7,
+            .T5.BlockTime .d7 {
+                top: 2%;
+            }
+            .WeekQuoteContainer{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                padding: 5px;
+                text-align: center;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #FFF;
+            }
+        
+            .WeekQuoteContainer .QuoteText{
+                font-size: 14px;
+                font-family: "JosefinSans" !important;
+                line-height: 1.2
+            }
+            .WeekQuoteContainer .author{
+                font-size: 12px;
+                font-family: "PTSans" !important;
+                line-height: 1;
+                padding-top: 5px;
+            }
+                
+        
+            .timeBoxItemWeekly {
+                width: 46%;
+                height: 104px;
+            }
+            .timeBoxItemWeekly p {
+                font-size: 16px !important;
+            }
+        </style>
+    </head>
+    <body>
+        <%   
+        function getQuoteContent(tabid) {
+            const type = (tabid==139 || tabid==159)? 2:(tabid==290)? 3:1;
+
+            // Get the index for the current type
+            const currentIndex = quoteIndices[type];
+
+            // Get the next quote of the current type
+            const newQuoteList = quoteList.filter((item) => item.type === type);
+            var quote = newQuoteList[currentIndex];
+
+            // Increment the index for the current type
+            quoteIndices[type]++;
+
+            // Reset the index if it exceeds the length of quotes of that type
+            if (quoteIndices[type] >= newQuoteList.length) {
+                quoteIndices[type] = 0;
+            }
+
+
+            if(tabid==139 || tabid==159 || tabid==310 ){
+                return `<div class='WeekQuoteContainer QuoteOnly'>
+                                <div class='QuoteText'>${quote.quote_text}</div>
+                                <div class='author'>${quote.author}</div>
+                            </div>`
+            }else if(tabid==290){
+                return `<div class='WeekQuoteContainer QuoteOnly QC-290'>
+                    <div class='QuoteText'>${quote.quote_text}</div>
+                    <div class='author'>${quote.author}</div>
+                </div>`
+            }else if(tabid==198 || tabid==317){
+                return `<div class='WeekQuoteContainer QuoteOnly QC-198'>
+                    <div class='QuoteText'>${quote.quote_text}</div>
+                    <div class='author'>${quote.author}</div>
+                </div>`
+            }
+            
+        }
+
+        var TimeClass = (Data.selectedTime ==137 || Data.selectedTime==157 || Data.selectedTime ==173 || Data.selectedTime ==179 || Data.selectedTime ==185 || Data.selectedTime ==191)? "BlockTime":"";
+        %>
+        <% if(Data.Page=="Left"){ %>
+        <div class="step3Container leftpage T<%=Data.layoutTab%> <%=TimeClass%>">
+            <div class="st3Coverdiv">
+                <div mr={1} class="st3page">
+                    
+                    <div class="WeeklyView-B0 LPLeft">
+                      <% if(Data.StartCMonth!= Data.EndCMonth){ %>
+                          <div class="WeeklyDateBTitle"><%= Data.StartCMonth %></div>
+                          <div class="WeeklyDateSTitle" ml={1}><%= Data.StartCDate %> - </div>
+                          <div class="WeeklyDateBTitle space" ml={1}> <%= Data.EndCMonth  %></div>
+                          <div class="WeeklyDateSTitle" ml={1}><%= Data.EndCDate %></div>
+                      <% }else{ %>
+                          <div class="WeeklyDateBTitle"><%= Data.StartCMonth  %></div>
+                          <div class="WeeklyDateSTitle" ml={1}><%= Data.StartCDate %> - <%= Data.EndCDate %></div>
+                      <% } %>
+                    </div>
+                    <div class="WeeklyView-B1 LPRight">
+                        <% if(Data.rightCustomRadio1==139 || Data.rightCustomRadio1==159 || Data.rightCustomRadio1==198 || Data.rightCustomRadio1 == 310 || Data.rightCustomRadio1 == 317){ %>
+                            <%- getQuoteContent(Data.rightCustomRadio1)%>
+                        <% }else{ %>
+                        <img class='PageSubImages' src="<%= ImageArr[Data.rightCustomRadio1].print_print_left_image %>" alt='' />
+                        <% } %>
+                        <% if((Data.rightCustomRadio1 === 145 || Data.rightCustomRadio1===146 || Data.rightCustomRadio1===151 || Data.rightCustomRadio1===165 || Data.rightCustomRadio1===166 || Data.rightCustomRadio1===167 || Data.rightCustomRadio1 === 313 || Data.rightCustomRadio1 === 314 || Data.rightCustomRadio1 === 315) &&  Data.rightCustomRadio1Text!=""){%>
+                            <div class="WeeklyViewCustomText ctext-<%=Data.rightCustomRadio1 %>"><%= Data.rightCustomRadio1Text %></div>
+                        <% } %>
+                    </div>
+                    <div class="WeeklyView-B2 LPLeft">
+                        <% if(Data.layoutBlock1 > 0 ){%>
+                            <img class='PageSubImages' src="<%= ImageArr[Data.layoutBlock1].print_print_left_image %>" alt=''/>
+                        <% } %>
+                    </div>
+                    <div class="WeeklyView-B3-left LPLeft">
+                        <% if(Data.layoutBlock2 > 0 ){%>
+                            <img class='PageSubImages' src="<%= ImageArr[Data.layoutBlock2].print_print_left_image %>" alt=''/>
+                        <% } %>
+                    </div>
+                    
+                    <div class='WeeklyView-B3 LPRight'>
+                      <img class="PageSubImages" src="<%= ImageArr[Data.selectedTime].print_print_left_image %>" alt=''/>
+                      <div class="d1">
+                        <div class="WeeklyCdate">
+                            <div class="WeeklyDateDTitle"><%= Data.nextDayDates[0].dayOfMonth %></div>
+                            <div class="WeeklyDateNTitle"><%= Data.nextDayDates[0].dayName %></div>
+                        </div>
+                      </div>
+                      <div class="d2">
+                        <div class="WeeklyCdate">
+                            <div class="WeeklyDateDTitle"><%= Data.nextDayDates[1].dayOfMonth %></div>
+                            <div class="WeeklyDateNTitle"><%= Data.nextDayDates[1].dayName %></div>
+                        </div>
+                      </div>
+                      <div class="d3">
+                        <div class="WeeklyCdate">
+                            <div class="WeeklyDateDTitle"><%= Data.nextDayDates[2].dayOfMonth %></div>
+                            <div class="WeeklyDateNTitle"><%= Data.nextDayDates[2].dayName %></div>
+                        </div>
+                      </div>
+                      <div class="d4">
+                        <div class="WeeklyCdate">
+                            <div class="WeeklyDateDTitle"><%= Data.nextDayDates[3].dayOfMonth %></div>
+                            <div class="WeeklyDateNTitle"><%= Data.nextDayDates[3].dayName %></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class='WeeklyView-B4 LPLeft PBottom'>
+                        <% if(Data.rightCustomRadio2==139 || Data.rightCustomRadio2==159 || Data.rightCustomRadio2==198 || Data.rightCustomRadio2 == 310 || Data.rightCustomRadio2 == 317){ %>
+                            <%- getQuoteContent(Data.rightCustomRadio2)%>
+                        <% }else{ %>
+                        <img class='PageSubImages' src="<%= ImageArr[Data.rightCustomRadio2].print_print_left_image %>" alt='' />
+                        <% } %>
+
+                        <% if((Data.rightCustomRadio2 === 145 || Data.rightCustomRadio2===146 || Data.rightCustomRadio2===151 || Data.rightCustomRadio2===165 || Data.rightCustomRadio2===166 || Data.rightCustomRadio2===167 || Data.rightCustomRadio2 === 313 || Data.rightCustomRadio2 === 314 || Data.rightCustomRadio2 === 315) &&  Data.rightCustomRadio2Text!=""){%>
+                            <div class="WeeklyViewCustomText ctext-<%=Data.rightCustomRadio2 %>"><%= Data.rightCustomRadio2Text %></div>
+                        <% } %>
+                    </div>
+                    <div class='WeeklyView-B5 LPRight PBottom'>
+                        <% if(Data.rightCustomRadio3==139 || Data.rightCustomRadio3==159 || Data.rightCustomRadio3==198 || Data.rightCustomRadio3 == 310 || Data.rightCustomRadio3 == 317){ %>
+                            <%- getQuoteContent(Data.rightCustomRadio3)%>
+                        <% }else{ %>
+                            <img class='PageSubImages' src="<%= ImageArr[Data.rightCustomRadio3].print_print_left_image %>" alt='' />
+                        <% } %>
+
+                        <% if((Data.rightCustomRadio3 === 145 || Data.rightCustomRadio3===146 || Data.rightCustomRadio3===151 || Data.rightCustomRadio3===165 || Data.rightCustomRadio3===166 || Data.rightCustomRadio3===167 || Data.rightCustomRadio3===313 || Data.rightCustomRadio3===314 || Data.rightCustomRadio3===315) &&  Data.rightCustomRadio3Text!=""){%>
+                            <div class="WeeklyViewCustomText ctext-<%=Data.rightCustomRadio3 %>"><%= Data.rightCustomRadio3Text %></div>
+                        <% } %>
+                    </div>
+  
+                </div>
+            </div>
+        </div>
+        <% }else{ %>
+            <div class="step3Container rightpage T<%=Data.layoutTab%> <%=TimeClass%>">
+                <div class="st3Coverdiv">
+                    <div ml={1} class="st3page rightpage">
+          
+                        <div class="WeeklyView-B6 RPLeft">
+
+                            <% if(Data.layoutTab!==6){ %>
+                                <% if(Data.rightCustomRadio2==139 || Data.rightCustomRadio2==159 || Data.rightCustomRadio2==198 || Data.rightCustomRadio2 == 310 || Data.rightCustomRadio2 == 317){ %>
+                                    <%- getQuoteContent(Data.rightCustomRadio2)%>
+                                <% }else{ %>
+                                    <img class='PageSubImages' src="<%= ImageArr[Data.rightCustomRadio2].print_right_image %>" alt='' />
+                                <% } %>
+                                <% if(Data.rightCustomRadio2Text!=""){ %>
+                                    <div class="WeeklyViewCustomText ctext-<%=Data.rightCustomRadio2 %>"><%= Data.rightCustomRadio2Text %></div>
+                                <% }%>
+                            <% }%>
+     
+                            <% if(Data.layoutTab===6){%>
+                                <% if( Data.rightCustomRadio1==290 ){ %>
+                                    <%- getQuoteContent(Data.rightCustomRadio1)%>
+                                <% }else{ %>
+                                    <img class='PageSubImages' src="<%= ImageArr[Data.rightCustomRadio1].print_right_image %>" alt='' />
+                                <% } %>
+                         
+                                <% if(Data.rightCustomRadio1Text!=""){ %>
+                                <div class="WeeklyViewCustomText ctext-<%=Data.rightCustomRadio1 %>"><%= Data.rightCustomRadio1Text %></div>
+                                <% }%>
+                            <% }%>
+                        </div>
+                        <div class="WeeklyView-B7 RPRight">
+                            <% if(Data.rightCustomRadio3==139 || Data.rightCustomRadio3==159 || Data.rightCustomRadio3==198 || Data.rightCustomRadio3 == 310 || Data.rightCustomRadio3 == 317){ %>
+                                <%- getQuoteContent(Data.rightCustomRadio3)%>
+                            <% }else{ %>
+                                <img class='PageSubImages' src="<%= ImageArr[Data.rightCustomRadio3].print_right_image %>" alt='' />
+                            <% } %>
+                            <% if((Data.rightCustomRadio3 === 145 || Data.rightCustomRadio3===146 || Data.rightCustomRadio3===151 || Data.rightCustomRadio3===165 || Data.rightCustomRadio3===166 || Data.rightCustomRadio3===167 || Data.rightCustomRadio3===313 || Data.rightCustomRadio3===314 || Data.rightCustomRadio3===315) &&  Data.rightCustomRadio3Text!=""){%>
+                                <div class="WeeklyViewCustomText ctext-<%=Data.rightCustomRadio3 %>"><%= Data.rightCustomRadio3Text %></div>
+                            <% } %>
+                        </div>
+                        <div class="WeeklyView-B8 RPLeft">
+                            <% if(Data.layoutBlock1 > 0 ){%>
+                                <img class='PageSubImages' src="<%= ImageArr[Data.layoutBlock1].print_right_image %>" alt=''/>
+                            <% } %>
+                        </div>
+                        <div class="WeeklyView-B9 RPLeft">
+                          <img class="PageSubImages" src="<%= ImageArr[Data.selectedTime].print_right_image %>" alt=''/>
+                          <div class="d5">
+                            <div class="WeeklyCdate">
+                                <div class="WeeklyDateNTitle"><%= (Data.layoutTab==1 || Data.layoutTab==6) ? Data.nextDayDates[4].dayName : Data.nextDayDates[3].dayName %></div>
+                                <div class="WeeklyDateDTitle"><%= (Data.layoutTab==1 || Data.layoutTab==6) ? Data.nextDayDates[4].dayOfMonth : Data.nextDayDates[3].dayOfMonth %></div>
+                            </div>
+                          </div>
+                          <div class="d6">
+                            <div class="WeeklyCdate">
+                                <div class="WeeklyDateNTitle"><%= (Data.layoutTab==1 || Data.layoutTab==6) ? Data.nextDayDates[5].dayName : Data.nextDayDates[4].dayName %></div>
+                                <div class="WeeklyDateDTitle"><%= (Data.layoutTab==1 || Data.layoutTab==6) ? Data.nextDayDates[5].dayOfMonth : Data.nextDayDates[4].dayOfMonth %></div>
+                            </div>
+                          </div>
+                          <div class="d7">
+                            <div class="WeeklyCdate">
+                                <div class="WeeklyDateNTitle"><%= (Data.layoutTab==1 || Data.layoutTab==6) ? Data.nextDayDates[6].dayName : Data.nextDayDates[5].dayName %></div>
+                                <div class="WeeklyDateDTitle"><%= (Data.layoutTab==1 || Data.layoutTab==6) ? Data.nextDayDates[6].dayOfMonth : Data.nextDayDates[5].dayOfMonth %></div>
+                            </div>
+                          </div>
+                          <div class="d8">
+                            <div class="WeeklyCdate">
+                                <div class="WeeklyDateNTitle"><%= (Data.layoutTab==1 || Data.layoutTab==6) ? Data.nextDayDates[7].dayName : Data.nextDayDates[6].dayName %></div>
+                                <div class="WeeklyDateDTitle"><%= (Data.layoutTab==1 || Data.layoutTab==6) ? Data.nextDayDates[7].dayOfMonth : Data.nextDayDates[6].dayOfMonth %></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="WeeklyView-B9-right RPRight">
+                            <% if(Data.layoutBlock2 > 0 ){%>
+                                <img class='PageSubImages' src="<%= ImageArr[Data.layoutBlock2].print_right_image %>" alt=''/>
+                            <% } %>
+                        </div>
+                        <div class="WeeklyView-B10 RPRight PBottom">
+                            <% if(Data.rightCustomRadio4==139 || Data.rightCustomRadio4==159 || Data.rightCustomRadio4==198 || Data.rightCustomRadio4 == 310 || Data.rightCustomRadio4 == 317){ %>
+                                <%- getQuoteContent(Data.rightCustomRadio4)%>
+                            <% }else{ %>
+                                <img class='PageSubImages' src="<%= ImageArr[Data.rightCustomRadio4].print_right_image %>" alt='' />
+                            <% } %>
+
+                            <% if((Data.rightCustomRadio4 === 145 || Data.rightCustomRadio4===146 || Data.rightCustomRadio4===151 || Data.rightCustomRadio4===165 || Data.rightCustomRadio4===166 || Data.rightCustomRadio4===167  || Data.rightCustomRadio4 === 313 || Data.rightCustomRadio4 === 314 || Data.rightCustomRadio4 === 315) &&  Data.rightCustomRadio4Text!=""){%>
+                                <div class="WeeklyViewCustomText ctext-<%=Data.rightCustomRadio4 %>"><%= Data.rightCustomRadio4Text %></div>
+                            <% } %>
+                        </div>
+                        <% if(ImageArr[Data.rightCustomRadio5]!==undefined){%>
+                        <div class="WeeklyView-B11 RPRight  PBottom">
+                            <% if(Data.rightCustomRadio5==139 || Data.rightCustomRadio5==159 ||  Data.rightCustomRadio5==198 || Data.rightCustomRadio5 == 310 || Data.rightCustomRadio5 == 317){ %>
+                                <%- getQuoteContent(Data.rightCustomRadio5)%>
+                            <% }else{ %>
+                                <img class='PageSubImages' src="<%= ImageArr[Data.rightCustomRadio5].print_right_image %>" alt='' />
+                            <% } %>
+                            <% if((Data.rightCustomRadio5 === 145 || Data.rightCustomRadio5===146 || Data.rightCustomRadio5===151 || Data.rightCustomRadio5===165 || Data.rightCustomRadio5===166 || Data.rightCustomRadio5===167 || Data.rightCustomRadio5 === 313 || Data.rightCustomRadio5 === 314 || Data.rightCustomRadio5 === 315) &&  Data.rightCustomRadio5Text!=""){%>
+                                <div class="WeeklyViewCustomText ctext-<%=Data.rightCustomRadio5 %>"><%= Data.rightCustomRadio5Text %></div>
+                            <% } %>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </body>
+</html>

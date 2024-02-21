@@ -1,0 +1,94 @@
+<%- contentFor('HeaderCss') %>
+
+    <%- contentFor('breadcrumb') %>
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0">Stories</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="/admin/stories">Stories</a></li>
+                            <li class="breadcrumb-item active">Add</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <%- contentFor('body') %>
+
+        <% if (message!="" ) { %>
+            <div class="alert alert-success">
+                <%= message  %>
+            </div>
+        <% } %>
+        <% if (error!="") { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% } %>
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Add Story</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/admin/story/save" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="user_id">User <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="user_id" name="user_id" required>
+                                            <option value="">Select User</option>
+                                            <% users.forEach(user =>{ %>
+                                                <option value="<%= user.id %>"><%= user.first_name+" "+user.last_name %></option>
+                                            <% }); %>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6"></div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="story_image">Image <span class="text-danger">*</span></label>
+                                        <input type="file" class="form-control"  id="story_image" name="story_image" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6"></div>
+                              
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="comments" >Comment</label>
+                                        <textarea class="form-control" placeholder="Enter comment about story" rows="5" id="comments" name="comments"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 text-left">
+                                    <a href="/admin/stories" class="btn btn-secondary w-md">Back</a>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <button type="submit" class="btn btn-primary w-md float-end">Submit</button>
+                                </div>
+                            </div>
+                            
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Form Layout -->
+
+
+    <%- contentFor('FooterJs') %>
+    <%- contentFor('BottomJs') %>

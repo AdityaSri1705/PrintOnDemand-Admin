@@ -1,0 +1,84 @@
+<%- contentFor('HeaderCss') %>
+
+    <%- contentFor('breadcrumb') %>
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0">Renewal Template</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item active">Renewal Template</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <%- contentFor('body') %>
+
+        <% if (message!="" ) { %>
+            <div class="alert alert-success">
+                <%= message  %>
+            </div>
+        <% } %>
+        <% if (error!="") { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% } %>
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Edit Renewal Template</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/admin/renewal-template/update" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                
+                                <% if(optData.print_left_image!="blank"){%>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="print_left_image">Print Left image</label>
+                                        <% if(optData.print_left_image!="" && optData.print_left_image!=null){%> 
+                                            <div class="image-container"> <div class="inner"><a href="/admin/renewal-template/delete-image/print_left_image/<%= optData.id %>" class="delete-btn" >X</a><img src="<%= optData.print_left_image %>" width="200" /></div></div>
+                                        <% }%>
+                                        <input type="file" class="form-control"  id="print_left_image" name="print_left_image">
+                                    </div>
+                                </div>
+                                <% }%>
+                                <% if(optData.print_right_image!="blank"){%>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="print_right_image">Print Right image</label>
+                                        <% if(optData.print_right_image!="" && optData.print_right_image!=null){%> 
+                                            <div class="image-container"> <div class="inner"><a href="/admin/renewal-template/delete-image/print_right_image/<%= optData.id %>" class="delete-btn" >X</a><img src="<%= optData.print_right_image %>" width="200" /></div></div>
+                                        <% }%>
+                                        <input type="file" class="form-control"  id="print_right_image" name="print_right_image">
+                                    </div>
+                                </div>
+                                <% }%>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-md-6 text-right">
+                                    <input type="hidden" id="id" name="id" value="<%= optData.id %>">
+                                    <button type="submit" class="btn btn-primary w-md float-end">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Form Layout -->
+
+
+    <%- contentFor('FooterJs') %>
+    <%- contentFor('BottomJs') %>

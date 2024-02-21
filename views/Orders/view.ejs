@@ -1,0 +1,338 @@
+<%- contentFor('HeaderCss') %>
+
+    <%- contentFor('breadcrumb') %>
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0">Orders</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="/admin/Orders">Orders</a></li>
+                            <li class="breadcrumb-item active">View</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <%- contentFor('body') %>
+
+        <% if (message!="" ) { %>
+            <div class="alert alert-success">
+                <%= message  %>
+            </div>
+        <% } %>
+        <% if (error!="") { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">View Order #<%= order.id %></h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/admin/Order/update" method="post" >
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>Order #<%= order.id %></h5>
+                                    
+                                    <div class="mb-3">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="order.code">Order Code</label>
+                                            </div>
+                                            <div class="col-md-9"><%= order.code %></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="order.created_at">Order Date</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <% const orderDate = new Date(order.created_at);
+                                                    
+                                                    const options = {
+                                                        day: '2-digit',
+                                                        month: '2-digit',
+                                                        year: 'numeric',
+                                                        hour: '2-digit',
+                                                        minute: '2-digit',
+                                                        hour12: true,
+                                                    };
+                                                    const formattedDate =  new Intl.DateTimeFormat('en-GB', options).format(orderDate);
+                                                %>
+                                                <%= formattedDate %>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="order.total">Order Amount</label>
+                                            </div>
+                                            <div class="col-md-9"><%= '$'+order.total %></div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="order.total">Payment Status</label>
+                                            </div>
+                                            <div class="col-md-9"><%= order.payment_status==1? 'Paid':'Unpaid' %></div>
+                                        </div>
+                                        <% if(order.payment_status==1){ %>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="order.payment_type">Payment Type</label>
+                                            </div>
+                                            <div class="col-md-9"><%= order.payment_type %></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="order.payment_date">Payment Date</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <%
+                                                    const paymentDate = new Date(order.payment_date);
+                                                    
+                                                    const options = {
+                                                        day: '2-digit',
+                                                        month: '2-digit',
+                                                        year: 'numeric',
+                                                        hour: '2-digit',
+                                                        minute: '2-digit',
+                                                        hour12: true,
+                                                    };
+                                                    const formattedPaymentDate =  new Intl.DateTimeFormat('en-GB', options).format(paymentDate);
+                                                %>
+                                                <%= formattedPaymentDate %>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="order.payment_id">Payment Id</label>
+                                            </div>
+                                            <div class="col-md-9"><%= order.payment_id %></div>
+                                        </div>
+                                        <% } %>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="order.order_status_id">Order Status</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <select id="status_id" name="status_id">
+                                                    <% orderStatus.map((status)=>{ %>
+                                                        <option value="<%= status.id %>" <%= status.id==order.order_status_id ? 'selected':'';%> ><%= status.title %></option>
+                                                    <% })%>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="order.order_status_id">Reason</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <textarea rows="3" cols="20" name="status_reason"><%= order.notes %></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3 mb-3"></div>
+                                            <div class="col-md-9">
+                                                <input type="hidden" id="id" name="id" value="<%= order.id %>">
+                                                <button type="submit" class="btn btn-sm btn-primary">Update Status</button>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>Shipping Detail</h5>
+                                    <div class="mb-3">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="shipping_name">Name</label>
+                                            </div>
+                                            <div class="col-md-9"><%= order.shipping_name %></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="shipping_email">Email</label>
+                                            </div>
+                                            <div class="col-md-9"><%= order.shipping_email %></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="shipping_phone">Phone</label>
+                                            </div>
+                                            <div class="col-md-9"><%= order.shipping_phone %></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="shipping_houseno">House</label>
+                                            </div>
+                                            <div class="col-md-9"><%= order.shipping_houseno %></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="shipping_street">Street</label>
+                                            </div>
+                                            <div class="col-md-9"><%= order.shipping_street %></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="shipping_city">City</label>
+                                            </div>
+                                            <div class="col-md-9"><%= order.shipping_city %></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="shipping_state">State</label>
+                                            </div>
+                                            <div class="col-md-9"><%= order.shipping_state %></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="shipping_zipcode">Zipcode</label>
+                                            </div>
+                                            <div class="col-md-9"><%= order.shipping_zipcode %></div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="form-label" for="shipping_country">Country</label>
+                                            </div>
+                                            <div class="col-md-9"><%= order.shipping_country %></div>
+                                        </div>
+          
+                                    </div>
+               
+                                </div>
+                                
+                                
+                                
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-md-12">
+                                    <h5>Order Detail</h5>
+                                    <table class="table table-bordered border-grey table-hover mb-0">
+                                        <thead>
+                                            <tr class="table-dark">
+                                                <td>Id</td>
+                                                <td>Items</td>
+                                                <td>Item Info</td>
+                                                <td>Page Count</td>
+                                                <td>Max Date</td>
+                                                <td>Quantity</td>
+                                                <td>Price</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <% if(orderItems.length>0){ 
+                                            var sn=1;
+                                            var subtotal=0;%>
+                                            <% orderItems.forEach(item => { 
+                                                subtotal += item.quantity*item.price;
+                                                %>
+                                                <tr>
+                                                    <td><%= sn++ %></td>
+                                                    <td>
+                                                        <% if(item.type=="Diary" && item.cover_id>0){ %>
+                                                            <% if(item.front_image!="" && item.front_image!=null){%>
+                                                                <img src="<%= item.front_image %>" width="50"><br />
+                                                            <% }%>
+                                                            <%= item.cover_title %>
+                                                        <% }else if(item.type=="GiftCard"){ %>
+                                                            <img src="/assets/images/giftcard.jpeg" width="100">
+                                                        <% } %>
+                                                    </td>
+                                                    <td>
+                                                        <% if(item.type=="Diary"){
+                                                            if(item.cover_id>0){ %>
+                                                                <a href="<%= item.cover_pdf %>" target="_blank">Cover File</a><br />
+                                                            <% }else{ %>
+                                                                <a href="/pdfs/<%=  item.cover_pdf %>" target="_blank">Cover File</a><br />
+                                                            <% } %>
+                                                        <a href="/pdfs/<%= item.innerpage_pdf %>" target="_blank">Gut File</a><br />
+                                                        <a href="/assets/FOIL.pdf" target="_blank">Foil File</a><br />
+                                                        <% } %>
+                                                        <% if(item.type=="GiftCard"){ 
+                                                            const CardData = JSON.parse(item.order_data); %>
+                                                            <div>
+                                                                <p>
+                                                                    Recipient Name: <%= CardData.recipientName %><br />
+                                                                    Recipient Email: <%= CardData.recipientEmail %><br />
+                                                                    Sender Name: <%= CardData.senderName %><br />
+                                                                    Sender Email: <%= CardData.senderEmail %><br />
+                                                                    Gift Message: <%= CardData.giftMessage %><br />
+                                                                    Delivery Date: <%= CardData.deliveryDate %>
+                                                                </p>
+                                                            </div>
+                                                        <% }%>
+
+
+                                                    </td>
+                                                    
+                                                    <td><%= item.pagecount %></td>
+                                                    <td>
+                                                        <% if(item.type=="Diary"){ 
+                                                            const maxDate = new Date(item.maxdate);
+                                                            
+                                                            const options = {
+                                                                day: '2-digit',
+                                                                month: '2-digit',
+                                                                year: 'numeric'
+                                                            };
+                                                            const formattedMaxDate =  new Intl.DateTimeFormat('en-GB', options).format(maxDate);
+                                                        %>
+                                                        <%= formattedMaxDate %>
+                                                        <% } %>
+                                                    </td>                                        
+                                                    <td align="center"><%= item.quantity %></td>
+                                                    <td align="right"><%= '$'+item.price %></td>
+                                                </tr>
+                                            <% }); %>
+                                            <tr class="table-secondary">
+                                                <td colspan="6">SubTotal</td>
+                                                <td align="right"><%= '$'+order.subtotal %></td>
+                                            </tr>
+                                            <tr class="table-light">
+                                                <td colspan="6">Tax</td>
+                                                <td align="right"><%= '$'+order.tax %></td>
+                                            </tr>
+                                            <tr class="table-light">
+                                                <td colspan="6">Shipping Cost</td>
+                                                <td align="right"><%= '$'+order.shipping_cost %></td>
+                                            </tr>
+                                            <tr class="table-dark">
+                                                <td colspan="6"><strong>Total</strong></td>
+                                                <td align="right"><strong><%= '$'+order.total %></strong></td>
+                                            </tr>
+                                        <% }else{ %>
+                                            <tr>
+                                                <td colspan="7" class="text-center text-bold">Sorry. No Order records exits!</td>
+                                            </tr>
+                                        <% } %>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-md-6 text-left">
+                                    <a href="/admin/Orders" class="btn btn-secondary w-md">Back</a>
+                                </div>
+                            </div>
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Form Layout -->
+
+
+    <%- contentFor('FooterJs') %>
+    <%- contentFor('BottomJs') %>

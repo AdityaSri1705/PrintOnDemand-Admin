@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <style>
+           body {
+               font-family: Arial, sans-serif;
+           }
+           .st5InsideCoverdiv {
+               width: 696px;
+               height: 936px;
+               position: relative;
+               display: flex;
+               flex-direction: row;
+               justify-content: center;
+               break-after: page;
+           }
+           .st5Coverdiv {
+               display: flex;
+               flex-direction: row;
+               width: 100%;
+               height: 100%;
+           }
+           .st5page {
+               width: 100%;
+               position: relative;
+               background-color: #FFF;
+               text-align: center;
+           }
+           .PageSubImages {
+               width: 100%;
+               height:  100%
+           }
+
+   
+       </style>
+    </head>
+    <body>
+        
+        <% if(FrontImage!=""){ %>
+        <div class="st5InsideCoverdiv">
+            <div class="st5Coverdiv">
+              <div  class="st5page">
+                <img class='PageSubImages' src="<%= FrontImage %>"  alt=''/>
+              </div>
+            </div>
+        </div>
+        <% } %>
+        <% if(BackImage!=""){ %>
+        <div class="st5InsideCoverdiv">
+            <div class="st5Coverdiv">
+                <div class="st5page">
+                    <img class='PageSubImages' src="<%= BackImage %>"  alt=''/>
+                </div>
+            </div>
+        </div> 
+        <% } %>
+    </body>
+</html>

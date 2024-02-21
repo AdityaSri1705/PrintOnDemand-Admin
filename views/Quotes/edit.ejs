@@ -1,0 +1,78 @@
+<%- contentFor('HeaderCss') %>
+
+    <%- contentFor('breadcrumb') %>
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0"><%= quoteData.quote_title %></h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="/admin/quotes">Quotes</a></li>
+                            <li class="breadcrumb-item active">Edit</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <%- contentFor('body') %>
+
+        <% if (message!="" ) { %>
+            <div class="alert alert-success">
+                <%= message  %>
+            </div>
+        <% } %>
+        <% if (error!="") { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% } %>
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Edit Quote </h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/admin/quote/update" method="post" >
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="quote">Quote <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Enter quote" id="quote" name="quote" value="<%= quoteData.quote_text %>" required >
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="author">Author </label>
+                                        <input type="text" class="form-control" placeholder="Enter author" id="author" name="author" value="<%= quoteData.author %>" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-md-6 text-left">
+                                    <a href="/admin/quotes" class="btn btn-secondary w-md">Back</a>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <input type="hidden" id="id" name="id" value="<%= quoteData.id %>">
+                                    <button type="submit" class="btn btn-primary w-md float-end">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Form Layout -->
+
+
+    <%- contentFor('FooterJs') %>
+    <%- contentFor('BottomJs') %>
+    

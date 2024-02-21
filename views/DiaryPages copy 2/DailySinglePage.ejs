@@ -1,0 +1,420 @@
+<html>
+    <head>
+        <style>
+            @font-face {
+               font-family: 'JosefinSans';
+               src: url('<%= Data.BaseUrl %>/assets/pdf_fonts/JosefinSans-Regular.ttf') format('truetype');
+             }
+             @font-face {
+               font-family: 'PTSans';
+               src: url('<%= Data.BaseUrl %>/assets/pdf_fonts/PTSans-Regular.ttf') format('truetype');
+             }
+             body {
+               font-family: Arial, sans-serif;
+               background-color: #FFFFFF;
+            }
+           .st3InsideCoverdiv {
+               width: 2175px;
+               height: 2925px;
+               background: #fff;
+               position: relative;
+               display: flex;
+               flex-direction: row;
+               justify-content: center;
+               break-after: page;
+           }
+
+            .st3Coverdiv {
+               display: flex;
+               flex-direction: row;
+               width: 100%;
+               height: 100%;
+               position: relative;
+           }
+
+           .st3page {
+               width: 100%;
+               position: relative;
+           }
+            .leftpage .st3page{
+                margin: 90px 213px 90px 90px
+            }
+            .rightpage .st3page{
+                margin: 90px 90px 90px 213px
+            }
+           img {
+               max-width: 100%;
+           }
+           .PageSubImages {
+               width: 100%;
+               height: 100%;
+           }
+           .FullWidthImg{
+               width: 100% !important;
+               height: auto !important;
+           }
+           .DailySB-B0 {
+               position: absolute;
+               top: 5px;
+               left: 0;
+               width: 347px;
+               height: 18px;
+           }
+
+           .DailySB-B1 {
+               position: absolute;
+               top: 0;
+               right: 0;
+               width: 41%;
+               height: 22px;
+           }
+           .DailySB-B2 {
+               position: absolute;
+               left: 0;
+               top: 4%;
+               width: 49%;
+               height: 21px;
+           }
+           .DailySB-B3 {
+               position: absolute;
+               left: 0;
+               top: 6.5%;
+               height: 76.7%;
+               width: 57.5%;
+               overflow: hidden;   
+           }
+           .DailySB-B4 {
+               position: absolute;
+               top: 4%;
+               right: 0;
+               height: 79.3%;
+               width: 40.7%;
+               overflow: hidden;
+           }
+           .DailySB-B5 {
+               position: absolute;
+               width: 49.2%;
+               height: 15.6%;
+               left: 0;
+               top: 85%;
+           }
+           .DailySB-B6 {
+               position: absolute;
+               width: 49.2%;
+               height: 15.6%;
+               right: 0;
+               top: 85%;
+           }
+           
+
+           .cdate{
+                display: flex;
+                align-items: baseline;
+           }
+           .DailyDateBTitle{
+               font-size: 12px !important;
+               color: #212121;
+               font-family: "JosefinSans" !important;
+               font-style: normal;
+               font-weight: 700 !important;
+               line-height: 1 !important;
+               text-transform: uppercase;
+               margin-right: 5px;
+           }
+           .DailyDateSTitle{
+               font-size:  10px !important;
+               color: #212121;
+               font-family: "JosefinSans" !important;
+               font-style: normal;
+               font-weight: 700;
+               line-height: 1.2 !important;
+           }
+           .Holiday{
+               font-size:  9px !important;
+               color: #212121;
+               font-family: "JosefinSans" !important;
+               font-style: normal;
+               font-weight: 400;
+               line-height: 1.2 !important;
+               margin-top: 3px;
+           }
+           .TopLeftDText {
+               position: absolute;
+               top: -3px;
+               left: 15px;
+               font-size: 8px !important;
+               color: #212121;
+               font-family: "JosefinSans" !important;
+               font-style: normal;
+               font-weight: 700 !important;
+               line-height: 8px  !important;
+               word-wrap: break-word;
+           }
+           .BottomRightDText {
+               position: absolute;
+               top: -3px;
+               left: 2px;
+               font-size: 9pt !important;
+               color: #212121;
+               font-family: "JosefinSans" !important;
+               font-style: normal;
+               font-weight: 700 !important;
+               line-height: 8px  !important;
+               word-wrap: break-word;
+               text-transform: uppercase;
+           }
+           .BottomLeftDText {
+               position: absolute;
+               top: -3px;
+               left: 2px;
+               font-size: 9pt !important;
+               color: #212121;
+               font-family: "JosefinSans" !important;
+               font-style: normal;
+               font-weight: 700 !important;
+               line-height: 12px !important;
+               word-wrap: break-word;
+               text-transform: uppercase;
+           }
+           .ctext-19{
+             left: 10px
+           }
+           .ctext-20{
+               top: 2px;
+               left: 5px;
+           }
+
+           .TopRight {
+               position: absolute;
+               top: 36px;
+               right: 14px;
+               width: 45%;
+               height: 7%;
+           }
+
+           .BottomLeft {
+               position: absolute;
+               bottom: 44px;
+               left: 0px;
+               width: 50%;
+               height: 20%;
+           }
+           .BottomRight {
+               position: absolute;
+               bottom: 44px;
+               right: 0px;
+               width: 50%;
+               height: 20%;
+           }
+           .TopLeft {
+               position: absolute;
+               top: 36px;
+               left: 33px;
+               width: 45%;
+               height: 6%;
+           }
+           .TopLeftDText {
+               top: -3px;
+               left: 15px;
+               font-size: 14px !important;
+           }
+           .TopRight {
+               top: 36px;
+               right: 14px;
+               width: 45%;
+               height: 7%;
+           }
+           .BottomRight {
+               position: absolute;
+               bottom: 44px;
+               right: 0px;
+               width: 35%;
+               height: 20%;
+           }
+
+
+            .DSQuoteContainer{
+                display: flex;
+                justify-content: inherit;
+                align-items: center;
+                flex-direction: column;
+                padding: 5px;
+                text-align: center;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #FFF;
+            }
+
+            .DSQuoteContainer .QuoteText{
+                font-size: 14px;
+                font-family: "JosefinSans" !important;
+                line-height: 1.2
+            }
+            .DSQuoteContainer .author{
+                font-size: 12px;
+                font-family: "PTSans" !important;
+                line-height: 1;
+                padding-top: 5px;
+            }
+
+            .DSQuoteContainer.RefQuote .QuoteSubContainer{
+                position: absolute;
+                top: 44%;
+                text-align: center;
+                background: #FFF;
+                height: 50%;
+            }
+            
+   
+       </style>
+    </head>
+    <body>
+        <%   
+        function getQuoteContent(tabid) {
+            const type = (tabid == 15) ? 1 : 2;
+
+            // Get the index for the current type
+            const currentIndex = quoteIndices[type];
+
+            // Get the next quote of the current type
+            const newQuoteList = quoteList.filter((item) => item.type === type);
+            var quote = newQuoteList[currentIndex];
+
+            // Increment the index for the current type
+            quoteIndices[type]++;
+
+            // Reset the index if it exceeds the length of quotes of that type
+            if (quoteIndices[type] >= newQuoteList.length) {
+                quoteIndices[type] = 0;
+            }
+
+
+            if(tabid==15){
+                return `<div class='DSQuoteContainer RefQuote'>
+                    <div class='QuoteSubContainer'>
+                        <div class='QuoteText'>${quote.quote_text}</div>
+                        <div class='author'>${quote.author}</div>
+                    </div>
+                </div>`
+            }else{
+                return `<div class='DSQuoteContainer QuoteOnly'>
+                    <div class='QuoteText'>${quote.quote_text}</div>
+                    <div class='author'>${quote.author}</div>
+                </div>`
+            }
+            
+        }
+        %>
+        <% if(Data.Page=="Left"){ %>
+        <div class="st3InsideCoverdiv leftpage">
+            <div class="st3Coverdiv">
+              <div  class="st3page">
+                
+                <div class="DailySB-B0">
+                  <div class="cdate">
+                    <div class="DailyDateBTitle"><%= Data.currentDay %></div>
+                    <div class="DailyDateSTitle" ml={1}><%= Data.currentMonthDate %></div>
+                  </div>
+                  <div class="Holiday">
+                    <%= Data.Holidays.map(holiday => holiday.title).join(', ') %>
+                  </div>
+                </div>
+                <div class="DailySB-B1">
+                <% if(Data.selectedWeeks.includes(5)){%>
+                <img class='FullWidthImg weekquater' src="<%= ImageArr[Data.WeeksQuaterImgId].left_image %>" alt=''/>
+                <% }%>
+                </div>
+                <div class="DailySB-B2">
+                 <% if(Data.selectedWeeks.includes(6)){%>
+                 <img class='PageSubImages preweek' src="<%= ImageArr[6].left_image %>" alt=''/>
+                 <% }%>
+                </div>
+                <div class="DailySB-B3">
+                <img class='PageSubImages' src="<%= ImageArr[Data.taskImageId].left_image %>" alt=''/>
+                </div>
+                <div class="DailySB-B4">
+                  <img class='PageSubImages' src="<%=  ImageArr[Data.selectedTime].left_image %>" alt=''/>
+                </div>
+                <div class="DailySB-B5">
+                    <img class='PageSubImages' src="<%= ImageArr[Data.bottomLeftTab].left_image %>" alt=''/>
+                    <% if(Data.bottomLeftTab === 15 || Data.bottomLeftTab === 12){%>
+                        <%- getQuoteContent(Data.bottomLeftTab) %>
+                    <% }%>
+
+                    <% if((Data.bottomLeftTab === 18 || Data.bottomLeftTab===19 || Data.bottomLeftTab===20) &&  Data.bottomLeftCustomText!=""){%>
+                        <div class="BottomLeftDText ctext-<%= Data.bottomLeftTab %>"><%= Data.bottomLeftCustomText %></div>
+                    <% } %>
+                </div>
+                <div class="DailySB-B6">
+                    <img class='PageSubImages' src="<%= ImageArr[Data.bottomRightTab].left_image %>" alt=''/>
+                    <% if(Data.bottomRightTab === 15 || Data.bottomRightTab === 12){%>
+                        <%- getQuoteContent(Data.bottomRightTab) %>
+                    <% }%>
+                    <% if((Data.bottomRightTab === 18 || Data.bottomRightTab===19 || Data.bottomRightTab===20) &&  Data.bottomRightCustomText!=""){%>
+                        <div class="BottomRightDText ctext-<%= Data.bottomRightTab %>"><%= Data.bottomRightCustomText %></div>
+                    <% } %>
+                </div>
+
+              </div>
+            </div>
+        </div>
+        <% }else{ %>
+        <div class="st3InsideCoverdiv rightpage">
+            <div class="st3Coverdiv">
+                <div ml={1} class="st3page">
+
+                    <div class="DailySB-B0">
+                        <div class="cdate">
+                          <div class="DailyDateBTitle"><%= Data.currentDay %></div>
+                          <div class="DailyDateSTitle" ml={1}><%= Data.currentMonthDate %></div>
+                        </div>
+                        <div class="Holiday">
+                          <% Data.Holidays.map(function(item) { %>
+                              <%= item.title %>
+                           <% })%>
+                        </div>
+                    </div>
+                    <div class="DailySB-B1">
+                    <% if(Data.selectedWeeks.includes(5)){%>
+                    <img class='FullWidthImg weekquater' src="<%= ImageArr[Data.WeeksQuaterImgId].left_image %>" alt=''/>
+                    <% }%>
+                    </div>
+                    <div class="DailySB-B2">
+                    <% if(Data.selectedWeeks.includes(6)){%>
+                    <img class='FullWidthImg preweek' src="<%= ImageArr[6].left_image %>" alt=''/>
+                    <% }%>
+                    </div>
+                    <div class="DailySB-B3">
+                    <img class='PageSubImages' src="<%= ImageArr[Data.taskImageId].left_image %>" alt=''/>
+                    </div>
+                    <div class="DailySB-B4">
+                        <img class='PageSubImages' src="<%=  ImageArr[Data.selectedTime].left_image %>" alt=''/>
+                    </div>
+                    <div class="DailySB-B5">
+                        <img class='PageSubImages' src="<%= ImageArr[Data.bottomLeftTab].right_image %>" alt=''/>
+                        <% if(Data.bottomLeftTab === 15 || Data.bottomLeftTab === 12){%>
+                            <%- getQuoteContent(Data.bottomLeftTab) %>
+                        <% }%>
+                        <% if((Data.bottomLeftTab === 18 || Data.bottomLeftTab===19 || Data.bottomLeftTab===20) &&  Data.bottomLeftCustomText!=""){%>
+                            <div class="BottomLeftDText ctext-<%= Data.bottomLeftTab %>"><%= Data.bottomLeftCustomText %></div>
+                        <% } %>
+                    </div>
+                    <div class="DailySB-B6">
+                        <img class='PageSubImages' src="<%= ImageArr[Data.bottomRightTab].right_image %>" alt=''/>
+                        <% if(Data.bottomRightTab === 15 || Data.bottomRightTab === 12){%>
+                            <%- getQuoteContent(Data.bottomRightTab) %>
+                        <% }%>
+                        
+                        <% if((Data.bottomRightTab === 18 || Data.bottomRightTab===19 || Data.bottomRightTab===20) &&  Data.bottomRightCustomText!=""){%>
+                            <div class="BottomRightDText ctext-<%= Data.bottomRightTab %>"><%= Data.bottomRightCustomText %></div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </body>
+</html>

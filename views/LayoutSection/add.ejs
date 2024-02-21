@@ -1,0 +1,75 @@
+<%- contentFor('HeaderCss') %>
+
+    <%- contentFor('breadcrumb') %>
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0"><%= layoutData.page+"-"+layoutData.title %> : Sections</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="/admin/layouts">Layouts</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/layout/sections/<%= layout_id %>">Sections</a></li>
+                            <li class="breadcrumb-item active">Add</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <%- contentFor('body') %>
+
+        <% if (message!="" ) { %>
+            <div class="alert alert-success">
+                <%= message  %>
+            </div>
+        <% } %>
+        <% if (error!="") { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% } %>
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Add Layout Section</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/admin/layout/section/save" method="post">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="title">Title <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Enter title" id="title" name="title" value="" required >
+                                    </div>
+                                   
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 text-left">
+                                    <a href="/admin/layout/sections/<%= layout_id %>" class="btn btn-secondary w-md">Back</a>
+                                </div>
+                                <div class="col-md-3 text-right">
+                                    <input type="hidden" name="layout_id" value="<%= layout_id %>" />
+                                    <button type="submit" class="btn btn-primary w-md float-end">Submit</button>
+                                </div>
+                            </div>
+                            
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Form Layout -->
+
+
+    <%- contentFor('FooterJs') %>
+    <%- contentFor('BottomJs') %>

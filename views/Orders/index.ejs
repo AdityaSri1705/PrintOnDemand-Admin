@@ -1,0 +1,133 @@
+<%- contentFor('HeaderCss') %>
+
+
+    <%- contentFor('breadcrumb') %>
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0">Orders</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="/admin/orders">Orders</a></li>
+                            <li class="breadcrumb-item active">List</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <%- contentFor('body') %>
+
+        <% if (message!="" ) { %>
+            <div class="alert alert-success">
+                <%= message  %>
+            </div>
+        <% } %>
+        <% if (error!="") { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0 float-start"></h4>
+                    </div><!-- end card header -->
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered border-grey table-hover mb-0">
+                                <thead>
+                                    <tr class="table-dark">
+                                        <td>Order Id</td>
+                                        <td>Code</td>
+                                        <td>User</td>
+                                        <td>Total</td>
+                                        <td>Payment Type</td>
+                                        <td>Payment Status</td>  
+                                        <td>Order Date</td>
+                                        <td>Order Status</td>                                           
+                                        <td>Action</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <% if(orders.length>0){ %>
+                                    <% orders.forEach(order => { 
+                                        const orderDate = new Date(order.created_at);
+                                        
+                                        const options = {
+                                            day: '2-digit',
+                                            month: '2-digit',
+                                            year: 'numeric',
+                                            hour: '2-digit',
+                                            minute: '2-digit',
+                                            hour12: true,
+                                          };
+                                        const formattedDate =   new Intl.DateTimeFormat('en-GB', options).format(orderDate);
+                                        %>
+                                        <tr>
+                                            <td><%= order.id %></td>
+                                            <td><%= order.code %></td>
+                                            <td><a href="/admin/user/edit/<%= order.user_id %>" target="_blank"><%= order.first_name %> <%= order.last_name %></a></td>
+                                            <td><%= order.total %></td>                                        
+                                            <td><%= order.payment_type %></td>
+                                            <td><%= order.payment_status==1? 'paid':'unpaid' %></td>
+                                            <td><%= formattedDate %></td>
+                                            <td><%= order.status_title %></td>
+                                            <td>
+                                                <a href="/admin/order/view/<%= order.id %>" id="view-btn" class="btn btn-warning btn-sm mr-2">View</a>
+                                            </td>
+                                        </tr>
+                                    <% }); %>
+                                <% }else{ %>
+                                    <tr>
+                                        <td colspan="7" class="text-center text-bold">Sorry. No Order records exits!</td>
+                                    </tr>
+                                <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <% if(totalPages>1){ %>
+                        <div class="pt-3">
+                            <nav class="">
+                                <ul class="pagination justify-content-center">
+                                    <% for (let i = 1; i <= totalPages; i++) { %>
+                                    <li class="page-item <%= i == currentPage ? 'active' : '' %>">
+                                        <a class="page-link" href="/admin/orders?page=<%= i %>"><%= i %></a>
+                                    </li>
+                                    <% } %>
+                                </ul>
+                            </nav>
+                        </div>
+                        <% } %>
+                    </div>
+                    <!-- end card body -->
+                </div>
+                <!-- end card -->
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+
+
+        <%- contentFor('FooterJs') %>
+        
+        
+
+        <%- contentFor('BottomJs') %>
+        <script>
+            jQuery(document).ready(function() {
+                $(".slide-status").on('change', function(event){
+                    var status= ($(this).prop('checked'))? '1':'2';
+                    var id = $(this).data('id');
+                    window.location = '/admin/order/status/'+id+'/'+status;
+                });
+            });
+        </script>

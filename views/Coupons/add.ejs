@@ -1,0 +1,106 @@
+<%- contentFor('HeaderCss') %>
+
+    <%- contentFor('breadcrumb') %>
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0">Coupons</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="/admin/coupons">Coupons</a></li>
+                            <li class="breadcrumb-item active">Add</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <%- contentFor('body') %>
+
+        <% if (message!="" ) { %>
+            <div class="alert alert-success">
+                <%= message  %>
+            </div>
+        <% } %>
+        <% if (error!="") { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% } %>
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Add Coupon</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/admin/coupon/save" method="post"  >
+                            <% for(i=1; i<=10; i++){%>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="code">Code<%= i %> <% if(i==1){ %><span class="text-danger">*</span><% } %></label>
+                                        <input type="text" class="form-control" placeholder="Enter code" id="code" name="code" value="" <% if(i==1){ %>required<% }%> >
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="expiry_date">Expiry Date<%= i %> <% if(i==1){ %><span class="text-danger">*</span><% } %></label>
+                                        <input type="date" class="form-control" placeholder="Enter expity date" id="expiry_date" name="expiry_date" value="" <% if(i==1){ %>required<% }%> >
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="discount_amount">Amount<%= i %></label>
+                                        <input type="text" class="form-control" placeholder="Enter amount" id="discount_amount" name="discount_amount" value="" >
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="discount_type">Type<%= i %></label>
+                                        <select class="form-control" id="discount_type" name="discount_type"   >
+                                            <option value="%">%</option>
+                                            <option value="$">$</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="user_limit">User limit<%= i %></label>
+                                        <input type="text" class="form-control" placeholder="Enter user limit" id="user_limit" name="user_limit" value="" >
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="item_limit">Item limit<%= i %></label>
+                                        <input type="text" class="form-control" placeholder="Enter item limit" id="item_limit" name="item_limit" value="" >
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                            <div class="row">
+                                <div class="col-md-6 text-left">
+                                    <a href="/admin/coupons" class="btn btn-secondary w-md">Back</a>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <button type="submit" class="btn btn-primary w-md float-end">Submit</button>
+                                </div>
+                            </div>
+                            
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Form Layout -->
+
+
+    <%- contentFor('FooterJs') %>
+    <%- contentFor('BottomJs') %>

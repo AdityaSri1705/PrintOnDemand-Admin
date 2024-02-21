@@ -1,0 +1,393 @@
+<!-- ========== Left Sidebar Start ========== -->
+<div class="vertical-menu">
+
+    <!-- LOGO -->
+    <div class="navbar-brand-box">
+        <a href="/" class="logo logo-dark">
+            <span class="logo-sm">
+                <img src="/assets/images/logo.png" alt="" width="100">
+            </span>
+            <span class="logo-lg">
+                <img src="/assets/images/logo.png" alt="" width="180">
+            </span>
+        </a>
+
+        <a href="/" class="logo logo-light">
+            <span class="logo-lg">
+                <img src="/assets/images/logo.png" alt="" width="180">
+            </span>
+            <span class="logo-sm">
+                <img src="/assets/images/logo.png" alt="" width="100">
+            </span>
+        </a>
+    </div>
+
+    <button type="button" class="btn btn-sm px-3 font-size-16 header-item vertical-menu-btn">
+        <i class="fa fa-fw fa-bars"></i>
+    </button>
+
+    <div data-simplebar class="sidebar-menu-scroll">
+
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+            <!-- Left Menu Start -->
+            <ul class="metismenu list-unstyled" id="side-menu">
+                <li class="menu-title" data-key="t-menu"><%=translation.Menu%></li>
+
+                <li>
+                    <a href="/admin/orders" >
+                        <i class="bx bx-cart icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-orders">Orders</span>
+                    </a>
+                </li>
+                <!--<li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-book icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-orders">Orders</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li>
+                            <a href="/admin/orders" >
+                            <i class="bx bx-cart icon nav-icon"></i>
+                            <span class="menu-item" data-key="t-orders">Orders</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/orders/giftcards" data-key="t-users">
+                              <i class="bx bx-credit-card-front icon nav-icon"></i>
+                                <span class="menu-item" data-key="t-orders">  Gift Orders
+                            </a>
+                        </li>
+                    </ul>
+                </li>-->
+                
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-book icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-covers">Covers</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="/admin/cover/categories" data-key="t-covercategory">Categories</a></li>
+                        <li><a href="/admin/covers" data-key="t-covers">Covers</a></li>
+                        <li><a href="/admin/cover/create" data-key="t-createcover">Add cover</a></li>
+                        
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-layout icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-layouts">Layouts</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="/admin/layouts" data-key="t-layouts">Layouts</a></li>
+                        <li><a href="/admin/calendar" data-key="t-calendar">Calendar Templates</a></li>
+                        <li><a href="/admin/addins" data-key="t-typeList">Addins Templates</a></li>
+                        <li><a href="/admin/renewal-template" data-key="t-typeList">Renewal Templates</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/coupons" >
+                        <i class="bx bxs-coupon icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-coupon">Coupons</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/holidays" >
+                        <i class="bx bx-calendar icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-layouts">Holidays</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/quotes" >
+                        <i class="bx bx-message-rounded-dots icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-quotes">Quotes</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-message icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-stories">Stories</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="/admin/stories" data-key="t-stories">Stories</a></li>
+                        <li><a href="/admin/story/create" data-key="t-createstory">Add Story</a></li>
+                        
+                    </ul>
+                </li>
+                
+            
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-user icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-users"><%=translation.Users%></span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="/admin/users" data-key="t-users"><%=translation.Users%></a></li>
+                        <li><a href="/admin/user/create" data-key="t-createuser"><%=translation.Create_User%></a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-slider icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-users">Slider</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="/admin/sliders" data-key="t-users">All Sliders</a></li>
+                        <li><a href="/admin/slider/create" data-key="t-createuser">Add Slider</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-credit-card-front icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-users">Gift Cards</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="/admin/giftcards" data-key="t-users">All Gift Card Images</a></li>
+                        <li><a href="/admin/giftcard/create" data-key="t-createuser">Add Gift Card Image</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/pages" >
+                        <i class="bx bx-file icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-users">Pages</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bxs-user icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-users">Admins</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="/admin/admins" data-key="t-users">Admins</a></li>
+                        <li><a href="/admin/admins/create" data-key="t-createuser">Add Admin</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/profile" >
+                        <i class="bx bx-user-circle icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-invoices">Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/change-password" >
+                        <i class="bx bx-key icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-invoices">Change Password</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/logout" >
+                        <i class="bx bx-log-out icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-invoices">Logout</span>
+                    </a>
+                </li>
+               <!-- <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-store icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-ecommerce"><%=translation.Ecommerce%></span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="ecommerce-products" data-key="t-products"><%=translation.Products%></a></li>
+                        <li><a href="ecommerce-product-detail" data-key="t-product-detail"><%=translation.Product_Detail%></a></li>
+                        <li><a href="ecommerce-orders" data-key="t-orders"><%=translation.Orders%></a></li>
+                        <li><a href="ecommerce-customers" data-key="t-customers"><%=translation.Customers%></a></li>
+                        <li><a href="ecommerce-cart" data-key="t-cart"><%=translation.Cart%></a></li>
+                        <li><a href="ecommerce-checkout" data-key="t-checkout"><%=translation.Checkout%></a></li>
+                        <li><a href="ecommerce-shops" data-key="t-shops"><%=translation.Shops%></a></li>
+                        <li><a href="ecommerce-add-product" data-key="t-add-product"><%=translation.Add_Product%></a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-receipt icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-invoices"><%=translation.Invoices%></span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="invoices-list" data-key="t-invoice-list"><%=translation.Invoice_List%></a></li>
+                        <li><a href="invoices-detail" data-key="t-invoice-detail"><%=translation.Invoice_Detail%></a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bxs-user-detail icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-contacts"><%=translation.Contacts%></span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="contacts-grid" data-key="t-user-grid"><%=translation.User_Grid%></a></li>
+                        <li><a href="contacts-list" data-key="t-user-list"><%=translation.User_List%></a></li>
+                        <li><a href="contacts-profile" data-key="t-user-settings"><%=translation.Profile%></a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-title" data-key="t-pages"><%=translation.Pages%></li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-user-circle icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-authentication"><%=translation.Authentication%></span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="pages-login" data-key="t-login"><%=translation.Login%></a></li>
+                        <li><a href="pages-register" data-key="t-register"><%=translation.Register%></a></li>
+                        <li><a href="pages-recoverpw" data-key="t-recover-password"><%=translation.Recover_Password%></a></li>
+                        <li><a href="pages-lock-screen" data-key="t-lock-screen"><%=translation.Lock%> Screen</a></li>
+                        <li><a href="pages-logout" data-key="t-logout"><%=translation.Log_Out%></a></li>
+                        <li><a href="pages-confirm-mail" data-key="t-confirm-mail"><%=translation.Confirm_Mail%></a></li>
+                        <li><a href="pages-email-verification" data-key="t-email-verification"><%=translation.Email_Verification%></a></li>
+                        <li><a href="pages-two-step-verification" data-key="t-two-step-verification"><%=translation.Two_Step_Verification%></a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-file icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-utility"><%=translation.Utility%></span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="pages-starter" data-key="t-starter-page"><%=translation.Starter_Page%></a></li>
+                        <li><a href="pages-maintenance" data-key="t-maintenance"><%=translation.Maintenance%></a></li>
+                        <li><a href="pages-comingsoon" data-key="t-coming-soon"><%=translation.Coming_Soon%></a></li>
+                        <li><a href="pages-timeline" data-key="t-timeline"><%=translation.Timeline%></a></li>
+                        <li><a href="pages-faqs" data-key="t-faqs"><%=translation.FAQs%></a></li>
+                        <li><a href="pages-pricing" data-key="t-pricing"><%=translation.Pricing%></a></li>
+                        <li><a href="pages-404" data-key="t-error-404"><%=translation.Error_404%></a></li>
+                        <li><a href="pages-500" data-key="t-error-500"><%=translation.Error_500%></a></li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <a href="layouts-vertical">
+                        <i class="bx bx-layout icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-vertical"><%=translation.Vertical%></span>
+                    </a>
+                </li>
+
+                <li class="menu-title" data-key="t-components"><%=translation.Components%></li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bxl-bootstrap icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-bootstrap"><%=translation.Bootstrap%></span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="ui-alerts" data-key="t-alerts"><%=translation.Alerts%></a></li>
+                        <li><a href="ui-buttons" data-key="t-buttons"><%=translation.Buttons%></a></li>
+                        <li><a href="ui-cards" data-key="t-cards"><%=translation.Cards%></a></li>
+                        <li><a href="ui-carousel" data-key="t-carousel"><%=translation.Carousel%></a></li>
+                        <li><a href="ui-dropdowns" data-key="t-dropdowns"><%=translation.Dropdowns%></a></li>
+                        <li><a href="ui-grid" data-key="t-grid"><%=translation.Grid%></a></li>
+                        <li><a href="ui-images" data-key="t-images"><%=translation.Images%></a></li>
+                        <li><a href="ui-modals" data-key="t-modals"><%=translation.Modals%></a></li>
+                        <li><a href="ui-offcanvas" data-key="t-offcanvas"><%=translation.Offcanvas%></a></li>
+                        <li><a href="ui-placeholders" data-key="t-placeholders"><%=translation.Placeholders%></a></li>
+                        <li><a href="ui-progressbars" data-key="t-progress-bars"><%=translation.Progress_Bars%></a></li>
+                        <li><a href="ui-tabs-accordions" data-key="t-tabs-accordions"><%=translation.Tabs_n_Accordions%></a></li>
+                        <li><a href="ui-typography" data-key="t-typography"><%=translation.Typography%></a></li>
+                        <li><a href="ui-video" data-key="t-video"><%=translation.Video%></a></li>
+                        <li><a href="ui-general" data-key="t-general"><%=translation.General%></a></li>
+                        <li><a href="ui-colors" data-key="t-colors"><%=translation.Colors%></a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-disc icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-extended"><%=translation.Extended%></span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="extended-lightbox" data-key="t-lightbox"><%=translation.Lightbox%></a></li>
+                        <li><a href="extended-rangeslider" data-key="t-range-slider"><%=translation.Range_Slider%></a></li>
+                        <li><a href="extended-sweet-alert" data-key="t-sweet-alert"><%=translation.SweetAlert_2%></a></li>
+                        <li><a href="extended-rating" data-key="t-rating"><%=translation.Rating%></a></li>
+                        <li><a href="extended-notifications" data-key="t-notifications"><%=translation.Notifications%></a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bxs-eraser icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-forms"><%=translation.Forms%></span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="form-elements" data-key="t-basic-elements"><%=translation.Basic_Elements%></a></li>
+                        <li><a href="form-validation"data-key="t-validation"><%=translation.Validation%></a></li>
+                        <li><a href="form-advanced"data-key="t-advanced-plugins"><%=translation.Advanced_Plugins%></a></li>
+                        <li><a href="form-editors"data-key="t-editors"><%=translation.Editors%></a></li>
+                        <li><a href="form-uploads"data-key="t-file-upload"><%=translation.File_Upload%></a></li>
+                        <li><a href="form-wizard"data-key="t-wizard"><%=translation.Wizard%></a></li>
+                        <li><a href="form-mask" data-key="t-mask"><%=translation.Mask%></a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-list-ul icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-tables"><%=translation.Tables%></span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="tables-basic" data-key="t-bootstrap-basic"><%=translation.Bootstrap_Basic%></a></li>
+                        <li><a href="tables-advanced" data-key="t-advanced-tables"><%=translation.Advance_Tables%></a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bxs-bar-chart-alt-2 icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-charts"><%=translation.Charts%></span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="charts-apex" data-key="t-apex-charts"><%=translation.Apex%></a></li>
+                        <li><a href="charts-chartjs" data-key="t-chartjs-charts"><%=translation.Chartjs%></a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-aperture icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-icons"><%=translation.Icons%></span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="icons-feather" data-key="t-feather"><%=translation.Feather%></a></li>
+                        <li><a href="icons-boxicons" data-key="t-boxicons"><%=translation.Boxicons%></a></li>
+                        <li><a href="icons-materialdesign" data-key="t-material-design"><%=translation.Material_Design%></a></li>
+                        <li><a href="icons-dripicons" data-key="t-dripicons"><%=translation.Dripicons%></a></li>
+                        <li><a href="icons-fontawesome" data-key="t-font-awesome"><%=translation.Font_awesome%></a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-map icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-maps"><%=translation.Maps%></span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="maps-google" data-key="t-google"><%=translation.Google%></a></li>
+                        <li><a href="maps-vector" data-key="t-vector"><%=translation.Vector%></a></li>
+                        <li><a href="maps-leaflet" data-key="t-leaflet"><%=translation.Leaflet%></a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow">
+                        <i class="bx bx-share-alt icon nav-icon"></i>
+                        <span class="menu-item" data-key="t-multi-level"><%=translation.Multi_Level%></span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="true">
+                        <li><a href="javascript: void(0);" data-key="t-level-1.1"><%=translation.Level_1_1%></a></li>
+                        <li><a href="javascript: void(0);" class="has-arrow" data-key="t-level-1.2"><%=translation.Level_1_2%></a>
+                            <ul class="sub-menu" aria-expanded="true">
+                                <li><a href="javascript: void(0);" data-key="t-level-2.1"><%=translation.Level_2_1%></a></li>
+                                <li><a href="javascript: void(0);" data-key="t-level-2.2"><%=translation.Level_2_2%></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>-->
+
+            </ul>
+        </div>
+        <!-- Sidebar -->
+    </div>
+</div>
+<!-- Left Sidebar End -->

@@ -1,0 +1,7 @@
+Code,ExpiryDate,DiscountAmount,DiscountType,UserLimit,ItemLimit
+AA1,6/2/2025,34,$,4,4
+BB2,6/2/2025,5,%,20,2
+CC3,6/2/2025,35,$,5,3
+DD4,6/2/2025,20,%,4,4
+EE5,6/2/2025,10,%,4,3
+FF6,6/2/2025,12,%,4,3

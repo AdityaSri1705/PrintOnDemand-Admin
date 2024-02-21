@@ -1,0 +1,123 @@
+<%- contentFor('HeaderCss') %>
+
+    <%- contentFor('breadcrumb') %>
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0">Covers</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="/admin/covers">covers</a></li>
+                            <li class="breadcrumb-item active">Add</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <%- contentFor('body') %>
+
+        <% if (message!="" ) { %>
+            <div class="alert alert-success">
+                <%= message  %>
+            </div>
+        <% } %>
+        <% if (error!="") { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% } %>
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Add Cover</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/admin/cover/save" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="title">Title <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Enter title" id="title" name="title" value="" required >
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="cat_id">Category <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="cat_id" name="cat_id" required>
+                                            <option value="">Select Category</option>
+                                            <% categories.forEach(category =>{ %>
+                                                <option value="<%= category.id %>"><%= category.title %></option>
+                                            <% }); %>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="price">Price <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Enter price" id="price" name="price" value="" required >
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="description">Description</label>
+                                        <textarea class="form-control"  id="description" name="description" cols="5"  ></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="cover_frontimg">Front Image <span class="text-danger">*</span></label>
+                                        <input type="file" class="form-control"  id="cover_frontimg" name="cover_frontimg" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="cover_backimg">Back Image <span class="text-danger">*</span></label>
+                                        <input type="file" class="form-control"  id="cover_backimg" name="cover_backimg" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="cover_pdf">Cover PDF <span class="text-danger">*</span></label>
+                                        <input type="file" class="form-control"  id="cover_pdf" name="cover_pdf" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="cover_otherimages">Other Images (Multiple)</label>
+                                        <input type="file" class="form-control"  id="cover_otherimages" name="cover_otherimages" multiple >
+                                    </div>
+                                </div>
+                                
+                              
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 text-left">
+                                    <a href="/admin/covers" class="btn btn-secondary w-md">Back</a>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <button type="submit" class="btn btn-primary w-md float-end">Submit</button>
+                                </div>
+                            </div>
+                            
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Form Layout -->
+
+
+    <%- contentFor('FooterJs') %>
+    <%- contentFor('BottomJs') %>

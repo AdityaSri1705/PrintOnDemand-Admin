@@ -1,0 +1,145 @@
+<%- contentFor('HeaderCss') %>
+
+    <%- contentFor('breadcrumb') %>
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0">Users</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="/admin/users">Users</a></li>
+                            <li class="breadcrumb-item active">Edit</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <%- contentFor('body') %>
+
+        <% if (message!="" ) { %>
+            <div class="alert alert-success">
+                <%= message  %>
+            </div>
+        <% } %>
+        <% if (error!="") { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Edit User</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/admin/user/update" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="first_name">First Name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Enter First Name" id="first_name" name="first_name" value="<%= user.first_name %>" required >
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="last_name">Last Name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Enter Last Name" id="last_name" name="last_name" value="<%= user.last_name %>" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="email">Email <span class="text-danger">*</span></label>
+                                        <input type="email" class="form-control" placeholder="Enter Email" id="email" name="email" value="<%= user.email %>" required>
+                                    </div>
+                                </div>
+                                <!--<div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="password">Password</label>
+                                        <input type="password" class="form-control"  id="password" name="password" value="">
+                                    </div>
+                                </div>-->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="gender">Gender <span class="text-danger">*</span></label><br>
+                                        <div class="form-check-inline mb-3">
+                                            <input class="form-check-input" type="radio" name="gender" id="male_gender" value="male" <% if(user.gender=="male"){%>checked<% }%>>
+                                            <label class="form-check-label" for="male_gender">Male</label>
+                                        </div>
+                                        <div class="form-check-inline mb-3">
+                                            <input class="form-check-input" type="radio" name="gender" id="female_gender" value="female" <% if(user.gender=="female"){%>checked<% }%>>
+                                            <label class="form-check-label" for="female_gender">Female</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="phone">Phone <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Enter Phone Number" id="phone" name="phone" value="<%= user.phone %>" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="about" >About</label>
+                                        <textarea class="form-control" placeholder="Enter about us" rows="5" id="about" name="about"><%= user.about %></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="profile_image">Profile Image</label>
+                                        <% if(user.profile_img!="" && user.profile_img!=null){%>  
+                                            <div class="image-container"> <div class="inner"><a href="/admin/user/delete-image/<%= user.id %>/profile" class="delete-btn" >X</a><img src="<%= user.profile_img %>" width="200" /></div></div> 
+                                        <% }%>
+                                        <input type="file" class="form-control"  id="profile_image" name="profile_image">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="banner_image">Banner image</label>
+                                        <% if(user.banner!="" && user.banner!=null){%>
+                                            <div class="image-container"> <div class="inner"><a href="/admin/user/delete-image/<%= user.id %>/banner" class="delete-btn" >X</a><img src="<%= user.banner %>" width="200" /></div></div>
+                                        <% }%>
+                                        <input type="file" class="form-control"  id="banner_image" name="banner_image">
+                                    </div>
+                                </div>
+                               
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="latitude">Latitude</label>
+                                        <input type="text" class="form-control" id="latitude" name="latitude" value="<%= user.latitude %>">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="longitude">Longitude</label>
+                                        <input type="text" class="form-control" id="longitude" name="longitude" value="<%= user.longitude %>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-md-6 text-left">
+                                    <a href="/admin/users" class="btn btn-secondary w-md">Back</a>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <input type="hidden" id="id" name="id" value="<%= user.id %>">
+                                    <button type="submit" class="btn btn-primary w-md float-end">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Form Layout -->
+
+
+    <%- contentFor('FooterJs') %>
+    <%- contentFor('BottomJs') %>

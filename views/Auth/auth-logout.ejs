@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Logout - Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Admin" name="description" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+    <%- include ('../Partials/HeaderStyle') %>
+
+</head>
+
+<body data-layout="horizontal" data-topbar="dark">
+
+    <div class="authentication-bg min-vh-100">
+        <div class="bg-overlay"></div>
+        <div class="container">
+            <div class="d-flex flex-column min-vh-100 px-3 pt-4">
+                <div class="row justify-content-center my-auto">
+                    <div class="col-md-8 col-lg-6 col-xl-5">
+
+                        <div class="text-center mb-4">
+                            <a href="/">
+                                <img src="/assets/images/logo.png" alt=""  width="400">
+                            </a>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body p-4">
+                                <div class="text-center mt-3">
+                                    <div class="avatar-xl mx-auto">
+                                        <div class="avatar-title bg-light text-primary h1 rounded-circle">
+                                            <i class="bx bxs-user"></i>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 pt-2">
+                                        <h5>You are Logged Out</h5>
+                                        <div class="mt-4">
+                                            <a href="/login" class="btn btn-primary w-100 waves-effect waves-light">Sign In</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div><!-- end col -->
+                </div><!-- end row -->
+
+            </div>
+        </div><!-- end container -->
+    </div>
+    <!-- end authentication section -->
+
+    <!-- JAVASCRIPT -->
+    <%- include ('../Partials/VendorScript') %>
+
+</body>
+
+</html>

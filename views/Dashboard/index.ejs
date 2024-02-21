@@ -1,0 +1,71 @@
+<%- contentFor('HeaderCss') %>
+
+    <%- contentFor('breadcrumb') %>
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0">Welcome !</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+                            <li class="breadcrumb-item active">Welcome !</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <%- contentFor('body') %>
+
+            <div class="row">
+                <div class="col-xl-4">
+                    <div class="card bg-primary">
+                        <div class="card-body">
+                            <div class="text-center py-3">
+                                <ul class="bg-bubbles ps-0">
+                                    <li><i class="bx bx-grid-alt font-size-24"></i></li>
+                                    <li><i class="bx bx-tachometer font-size-24"></i></li>
+                                    <li><i class="bx bx-store font-size-24"></i></li>
+                                    <li><i class="bx bx-cube font-size-24"></i></li>
+                                    <li><i class="bx bx-cylinder font-size-24"></i></li>
+                                    <li><i class="bx bx-command font-size-24"></i></li>
+                                    <li><i class="bx bx-hourglass font-size-24"></i></li>
+                                    <li><i class="bx bx-pie-chart-alt font-size-24"></i></li>
+                                    <li><i class="bx bx-coffee font-size-24"></i></li>
+                                    <li><i class="bx bx-polygon font-size-24"></i></li>
+                                </ul>
+                                <div class="main-wid position-relative">
+                                    <h3 class="text-white"> Dashboard</h3>
+
+                                    <h3 class="text-white mb-0"> Welcome Back,  <%- currentUser.name %>!</h3>
+
+                                    <p class="text-white-50 px-4 mt-4">Maecenas nec odio et ante tincidunt tempus. Donec
+                                        vitae sapien libero tincidunt.</p>
+
+                                    <div class="mt-4 pt-2 mb-2">
+                                        <a href="/admin/profile" class="btn btn-success">View Profile <i
+                                                class="mdi mdi-arrow-right ms-1"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <%- contentFor('FooterJs') %>
+
+                <!-- apexcharts -->
+                <script src="/assets/libs/apexcharts/apexcharts.min.js"></script>
+                <!-- Chart JS -->
+                <script src="/assets/js/pages/chartjs.js"></script>
+
+                <script src="/assets/js/pages/dashboard.init.js"></script>
+
+                <%- contentFor('BottomJs') %>

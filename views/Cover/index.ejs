@@ -1,0 +1,163 @@
+<%- contentFor('HeaderCss') %>
+
+
+    <%- contentFor('breadcrumb') %>
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0">Covers</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="/admin/covers">Covers</a></li>
+                            <li class="breadcrumb-item active">List</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <%- contentFor('body') %>
+
+        <% if (message!="" ) { %>
+            <div class="alert alert-success">
+                <%= message  %>
+            </div>
+        <% } %>
+        <% if (error!="") { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% } %>
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6 d-flex  align-items-center" >
+                                <label class="me-3">Category: </label>
+                                <select class="form-control" id="category_filter" name="category_filter" >
+                                    <option value="" <%= category_filter=="" ? 'selected':'' %>>All Categories</option>
+                                    <% categories.forEach(category =>{ %>
+                                        <option value="<%= category.id %>" <%= category_filter==category.id ? 'selected':'' %>><%= category.title %></option>
+                                    <% }); %>
+                                </select>
+                            </div>
+                            <div class="col-lg-9  col-md-6">
+                                <h4 class="card-title mb-0 float-start"></h4>
+                                <a href="/admin/cover/create" class="btn btn-warning  float-end">Add New Cover</a>
+                            </div>
+                        </div>
+                        
+                    </div><!-- end card header -->
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered border-grey table-hover mb-0">
+                                <thead>
+                                    <tr class="table-dark">
+                                        <td>Front Image</td>
+                                        <td>Back Image</td>
+                                        <td>PDF</td>
+                                        <td>Title</td>
+                                        <td>Price</td>
+                                        <td>Category</td>
+                                        <td>Other Images</td> 
+                                        <td>Status</td>                                            
+                                        <td>Action</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <% if(covers.length>0){ %>
+                                    <% covers.forEach(cover => { %>
+                                        <tr>
+                                            <td>
+                                                <% if(cover.front_image!="" && cover.front_image!=null){%>
+                                                    <img src="<%= cover.front_image %>" width="50">
+                                                <% }%>
+                                            </td>
+                                            <td>
+                                                <% if(cover.back_image!="" && cover.back_image!=null){%>
+                                                    <img src="<%= cover.back_image %>" width="50">
+                                                <% }%>
+                                            </td>
+                                            <td>
+                                                <% if(cover.cover_pdf!="" && cover.cover_pdf!=null){%>
+                                                    <a href="<%= cover.cover_pdf %>" target="_blank"><img src="/assets/images/PDF_icon.svg" width="50"></a>
+                                                <% }%>
+                                            </td>
+                                            <td><%= cover.title %></td>
+                                            <td><%= cover.price %></td>
+                                            <td><%= cover.cat_title %></td>
+                                            <td><%= cover.imageCount %></td>
+                                            <td>
+                                                <div class="form-check form-switch form-switch-md mb-3" dir="ltr">
+                                                    <input type="checkbox" class="form-check-input slide-status" id="coverstatus" name="status" data-id="<%= cover.id %>" <%= (cover.status==1)? 'checked':''; %> value="active">
+                                                    <label class="form-check-label" for="customSwitch1"><%= (cover.status==1)? 'Active':'Inactive'; %></label>
+                                                </div>  
+                                            </td>
+                                            <td>
+                                                <a href="/admin/cover/edit/<%= cover.id %>" class="btn btn-success btn-sm mr-2">Edit</a> 
+                                                <a href="/admin/cover/delete/<%= cover.id %>" id="delete-btn" class="btn btn-danger btn-sm">Delete</a>
+                                            </td>
+                                        </tr>
+                                    <% }); %>
+                                <% }else{ %>
+                                    <tr>
+                                        <td colspan="9"  class="text-center text-bold">Sorry. No cover records exits!</td>
+                                    </tr>
+                                <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <% if(totalPages>1){ %>
+                        <div class="pt-3">
+                            <nav class="">
+                                <ul class="pagination justify-content-center">
+                                    <% for (let i = 1; i <= totalPages; i++) { %>
+                                    <li class="page-item <%= i == currentPage ? 'active' : '' %>">
+                                        <a class="page-link" href="/admin/covers?<%=  (category_filter!='')? 'category='+category_filter+'&':'' %>page=<%= i %>"><%= i %></a>
+                                    </li>
+                                    <% } %>
+                                </ul>
+                            </nav>
+                        </div>
+                        <% } %>
+                    </div>
+                    <!-- end card body -->
+                </div>
+                <!-- end card -->
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+
+
+        <%- contentFor('FooterJs') %>
+
+        
+
+        <%- contentFor('BottomJs') %>
+        <script>
+            jQuery(document).ready(function() {
+                $(".slide-status").on('change', function(event){
+                    var status= ($(this).prop('checked'))? '1':'0';
+                    var id = $(this).data('id');
+                    window.location = '/admin/cover/status/'+id+'/'+status;
+                });
+                $("#category_filter").on('change', function(event){
+                    const category = $(this).val();
+                    const  page = 1;
+                    if(category!="")
+                        window.location = '/admin/covers/?category='+category+'&page=1';
+                    else
+                        window.location = '/admin/covers/?page=1';
+                });
+            });
+            
+        </script>

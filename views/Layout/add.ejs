@@ -1,0 +1,114 @@
+<%- contentFor('HeaderCss') %>
+
+    <%- contentFor('breadcrumb') %>
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0"><%= layoutData.page %> : Layout</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="/admin/layouts">Layouts</a></li>
+                            <li class="breadcrumb-item active">Add</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <%- contentFor('body') %>
+
+        <% if (message!="" ) { %>
+            <div class="alert alert-success">
+                <%= message  %>
+            </div>
+        <% } %>
+        <% if (error!="") { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% } %>
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Add Layout</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/admin/layout/save" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="page">Page Name<span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Enter page name" id="page" name="page" value="" required >
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="slug">Page Slug <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Enter page slug" id="slug" name="slug" value="" required >
+                                    </div>
+                                </div>
+                                <!--<div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="title">Title <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Enter title" id="title" name="title" value="" required >
+                                    </div>
+                                </div>
+                                <div class="col-md-6"></div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="left_image">Left Page Image</label>
+                                        <input type="file" class="form-control"  id="left_image" name="left_image">
+                                    </div>
+                                </div>-->
+                                <div class="col-md-16">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="right_image">Right Page Image</label>
+                                        <input type="file" class="form-control"  id="right_image" name="right_image">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3 d-flex">
+                                        <label class="form-label me-3" for="isDefault" >Default</label>
+                                        <div class="form-check form-switch form-switch-md mb-3" dir="ltr">
+                                            <input type="checkbox" class="form-check-input slide-status" id="isDefault" name="isDefault"  value="1">
+                                            <label class="form-check-label" for="customSwitch1" id="isDefaultLabel">No</label>
+                                        </div>  
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 text-left">
+                                    <a href="/admin/layouts" class="btn btn-secondary w-md">Back</a>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <button type="submit" class="btn btn-primary w-md float-end">Submit</button>
+                                </div>
+                            </div>
+                            
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Form Layout -->
+
+
+    <%- contentFor('FooterJs') %>
+    <%- contentFor('BottomJs') %>
+    <script>
+        jQuery(document).ready(function() {
+            $("#isDefault").on('change', function(event){
+                var status= ($(this).prop('checked'))? 'Yes':'No';
+                $("#isDefaultLabel").html(status);
+            });
+           
+        });
+    </script>

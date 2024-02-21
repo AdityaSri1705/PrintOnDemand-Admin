@@ -1,0 +1,143 @@
+<%- contentFor('HeaderCss') %>
+
+    <%- contentFor('breadcrumb') %>
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0">Layout Options</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="/admin/layouts">Layouts</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/layout/sections/<%= optData.layout_id %>">Section</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/layout/options/<%= optData.layout_id %>/?section_filter=<%= optData.section_id %>">Options</a></li>
+                            <li class="breadcrumb-item active">Edit</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <%- contentFor('body') %>
+
+        <% if (message!="" ) { %>
+            <div class="alert alert-success">
+                <%= message  %>
+            </div>
+        <% } %>
+        <% if (error!="") { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% } %>
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Edit Layout Option</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/admin/layout/option/update" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="title">Layout : <strong><%= optData.layout_title %></strong></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="title">Section : <strong><%= optData.section_title %></strong></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="title">Title <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Enter title" id="title" name="title" value="<%= optData.title %>" required >
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="opttype">Type <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="opttype" name="opttype" >
+                                            <option value="Radio"<%= optData.type=='Radio' ? 'selected':'' %> >Radio button</option>
+                                            <option value="Checkbox" <%= optData.type=='Checkbox' ? 'selected':'' %>>Checkbox</option>
+                                            <option value="Custom" <%= optData.type=='Custom' ? 'selected':'' %>>Custom</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <% if(optData.left_image!="blank"){%>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="left_image">Left image</label>
+                                        <% if(optData.left_image!="" && optData.left_image!=null){%> 
+                                            <div class="image-container"> <div class="inner"><a href="/admin/layout/option/delete-image/left_image/<%= optData.id %>" class="delete-btn" >X</a><img src="<%= optData.left_image %>" width="200" /></div></div>
+                                        <% }%>
+                                        <input type="file" class="form-control"  id="left_image" name="left_image">
+                                    </div>
+                                </div>
+                                <% }%>
+                                <% if(optData.right_image!="blank"){%>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="right_image">Right image</label>
+                                        <% if(optData.right_image!="" && optData.right_image!=null){%> 
+                                            <div class="image-container"> <div class="inner"><a href="/admin/layout/option/delete-image/right_image/<%= optData.id %>" class="delete-btn" >X</a><img src="<%= optData.right_image %>" width="200" /></div></div>
+                                        <% }%>
+                                        <input type="file" class="form-control"  id="right_image" name="right_image">
+                                    </div>
+                                </div>
+                                <% }%>
+                                <% if(optData.print_left_image!="blank"){%>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="print_left_image">Print Left image</label>
+                                        <% if(optData.print_left_image!="" && optData.print_left_image!=null){%> 
+                                            <div class="image-container"> <div class="inner"><a href="/admin/layout/option/delete-image/print_left_image/<%= optData.id %>" class="delete-btn" >X</a><img src="<%= optData.print_left_image %>" width="200" /></div></div>
+                                        <% }%>
+                                        <input type="file" class="form-control"  id="print_left_image" name="print_left_image">
+                                    </div>
+                                </div>
+                                <% }%>
+                                <% if(optData.print_right_image!="blank"){%>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="print_right_image">Print Right image</label>
+                                        <% if(optData.print_right_image!="" && optData.print_right_image!=null){%> 
+                                            <div class="image-container"> <div class="inner"><a href="/admin/layout/option/delete-image/print_right_image/<%= optData.id %>" class="delete-btn" >X</a><img src="<%= optData.print_right_image %>" width="200" /></div></div>
+                                        <% }%>
+                                        <input type="file" class="form-control"  id="print_right_image" name="print_right_image">
+                                    </div>
+                                </div>
+                                <% }%>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="title">Hint </label>
+                                        <input type="text" class="form-control" placeholder="Enter hint" id="hint" name="hint" value="<%= optData.hint %>"  >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-md-6 text-left">
+                                    <a href="/admin/layout/options/<%= optData.layout_id %>/?section_filter=<%= optData.section_id %>" class="btn btn-secondary w-md">Back</a>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <input type="hidden" id="id" name="id" value="<%= optData.id %>">
+                                    <button type="submit" class="btn btn-primary w-md float-end">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Form Layout -->
+
+
+    <%- contentFor('FooterJs') %>
+    <%- contentFor('BottomJs') %>

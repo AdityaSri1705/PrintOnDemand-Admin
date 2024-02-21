@@ -1,0 +1,115 @@
+<html>
+    <head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFFFFF;
+        }
+
+        .st2InsideCoverBox {
+            width: 696px;
+            height: 936px;
+            background: #fff;
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            break-after: page;
+        }
+        img {
+            max-width: 100%;
+        }
+        .st2InsidePage {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .rightpage .st2InsidePage{
+            margin: 28px 28px 28px 66px
+        }
+
+        .st2InsideCoverTextBox {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 auto;
+        }
+        .date {
+            color: var(--greyscale-500, #9e9e9e);
+            text-align: center;
+            font-family: Poppins-Regular !important;
+            font-size: 28px !important;
+            font-style: normal;
+            font-weight: 500 !important;
+            line-height: 28px !important;
+            text-decoration: underline;
+            text-decoration-thickness: auto;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 10px;
+            letter-spacing: 0.00938em;
+            margin-bottom: 16px;
+        }
+        .nameText {
+            color: var(--greyscale-500, #9e9e9e);
+            text-align: center;
+            font-family: Poppins-Regular !important;
+            font-size: 28px !important;
+            font-style: normal;
+            font-weight: 500 !important;
+            line-height: 28px !important;
+            letter-spacing: 0.00938em;
+            margin-bottom: 8px;
+        }
+        .contactText {
+            color: var(--greyscale-500, #9e9e9e);
+            text-align: center;
+            font-family: Poppins-Regular !important;
+            font-size: 14px !important;
+            font-style: normal;
+            font-weight: 500 !important;
+            line-height: 22px !important;
+            letter-spacing: 0.00938em;
+            margin-bottom: 8px;
+        }
+        .contactText {
+            color: var(--greyscale-500, #9e9e9e);
+            text-align: center;
+            font-family: Poppins-Regular !important;
+            font-size: 14px !important;
+            font-style: normal;
+            font-weight: 500 !important;
+            line-height: 22px !important;
+            letter-spacing: 0.00938em;
+            margin-bottom: 8px;
+        }
+        .messageText {
+            color: var(--greyscale-500, #9e9e9e);
+            text-align: center;
+            font-family: Poppins-Regular !important;
+            font-size: 12px !important;
+            font-style: normal;
+            font-weight: 500 !important;
+            line-height: 22px !important;
+            letter-spacing: 0.00938em;
+            margin-bottom: 8px;
+        }
+    </style>
+    </head>
+    <body>
+        <div class="st2InsideCoverBox rightpage">
+            <div class="st2InsidePage">
+                <div class="st2InsideCoverTextBox">
+                <div mb={2} class='date'><%= Year %></div>
+                <div mb={1} class='nameText'><%= Name.toUpperCase() %></div>
+                <div mb={1} class='contactText'><%= Email %></div>
+                <div mb={1} class='contactText'><%= Phone %></div>
+                <div mb={1} class='messageText'><%= Message %></div>
+            </div>
+        </div>
+
+        </div>
+    </body>
+</html>

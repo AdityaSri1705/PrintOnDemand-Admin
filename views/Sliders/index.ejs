@@ -1,0 +1,128 @@
+<%- contentFor('HeaderCss') %>
+
+
+    <%- contentFor('breadcrumb') %>
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0">Sliders</h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="/admin/sliders">Sliders</a></li>
+                            <li class="breadcrumb-item active">List</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <%- contentFor('body') %>
+
+        <% if (message!="" ) { %>
+            <div class="alert alert-success">
+                <%= message  %>
+            </div>
+        <% } %>
+        <% if (error!="") { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% } %>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0 float-start"></h4>
+                        <a href="/admin/slider/create" class="btn btn-warning  float-end">Add New Slider</a>
+                    </div><!-- end card header -->
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered border-grey table-hover mb-0">
+                                <thead>
+                                    <tr class="table-dark">
+                                        <td>Image</td>
+                                        <td>Title</td>
+                                        <td>Sequence</td>  
+                                        <td>Button Text</td>
+                                        <td>Button Link</td> 
+                                        <td>Status</td>                                            
+                                        <td>Action</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <% if(sliders.length>0){ %>
+                                    <% sliders.forEach(slider => { %>
+                                        <tr>
+                                            <td>
+                                                <% if(slider.image!="" && slider.image!=null){%>
+                                                    <img src="<%= slider.image %>" width="50">
+                                                <% }%>
+                                            </td>
+                                            <td><%= slider.title %></td>
+                                            <td><%= slider.sequence %></td>
+                                            <td><%= slider.btn_text %></td>
+                                            <td><%= slider.btn_link %></td>
+                                            <td>
+                                                <div class="form-check form-switch form-switch-md mb-3" dir="ltr">
+                                                    <input type="checkbox" class="form-check-input slide-status" id="sliderstatus" name="status" data-id="<%= slider.id %>" <%= (slider.status==1)? 'checked':''; %> value="active">
+                                                    <label class="form-check-label" for="customSwitch1"><%= (slider.status==1)? 'Active':'Inactive'; %></label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <a href="/admin/slider/edit/<%= slider.id %>" class="btn btn-success btn-sm mr-2">Edit</a> 
+                                                <a href="/admin/slider/delete/<%= slider.id %>" id="delete-btn" class="btn btn-danger btn-sm">Delete</a>
+                                            </td>
+                                        </tr>
+                                    <% }); %>
+                                <% }else{ %>
+                                    <tr>
+                                        <td colspan="5"  class="text-center text-bold">Sorry. No slider records exits!</td>
+                                    </tr>
+                                <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <% if(totalPages>1){ %>
+                        <div class="pt-3">
+                            <nav class="">
+                                <ul class="pagination justify-content-center">
+                                    <% for (let i = 1; i <= totalPages; i++) { %>
+                                    <li class="page-item <%= i == currentPage ? 'active' : '' %>">
+                                        <a class="page-link" href="/admin/slider?page=<%= i %>"><%= i %></a>
+                                    </li>
+                                    <% } %>
+                                </ul>
+                            </nav>
+                        </div>
+                        <% } %>
+                    </div>
+                    <!-- end card body -->
+                </div>
+                <!-- end card -->
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end row -->
+
+
+        <%- contentFor('FooterJs') %>
+
+        
+
+        <%- contentFor('BottomJs') %>
+        <script>
+            jQuery(document).ready(function() {
+                $(".slide-status").on('change', function(event){
+                    var status= ($(this).prop('checked'))? '1':'0';
+                    var id = $(this).data('id');
+                    window.location = '/admin/slider/status/'+id+'/'+status;
+                });
+            });
+        </script>

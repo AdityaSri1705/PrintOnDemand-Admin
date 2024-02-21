@@ -1,0 +1,412 @@
+<html>
+    <head>
+        <style>
+           body {
+               font-family: Arial, sans-serif;
+               background-color: #FFFFFF;
+           }
+           .step3Container {
+               width: 696px;
+               height: 936px;
+               background: #fff;
+               position: relative;
+               display: flex;
+               flex-direction: row;
+               justify-content: center;
+               margin: 0 auto;
+               break-after: page;
+            }
+            .st3CoverBox {
+               display: flex;
+               flex-direction: row;
+               width: 100%;
+               height: 100%;
+               position: relative;
+            }
+            .st3page {
+                width: 100%;
+                position: relative;
+            }
+            .leftpage .st3page{
+                margin: 28px 66px 28px 28px
+            }
+            .rightpage .st3page{
+                margin: 28px 28px 28px 66px
+            }
+            .st3page img {
+                width: 100%;
+                height: 100%;
+            }
+            .PageSubImages {
+                width: 100%;
+                height: 100%;
+            }
+            .FullWidthImg{
+               width: 100% !important;
+               height: auto !important;
+            }
+            .FullWidthImg.weekquater,
+            .FullWidthImg.preweek{
+               width: auto !important;
+               height: auto !important;
+            }
+            .TopLeft {
+                position: absolute;
+                top: 36px;
+                left: 0;
+                width: 45%;
+                height: 6%;
+            }
+            .DailyTB-B0 {
+                position: absolute;
+                top: 8px;
+                left: 0;
+                width: 57.5%;
+                height: 4%;
+            }
+            .DailyTB-B1 {
+                position: absolute;
+                top: 6%;
+                left: 0;
+                width: 57.5%;
+                height: 5%;
+                background: #FFF;
+            }
+            .DailyTB-B2 {
+                position: absolute;
+                top: 9%;
+                left: 0;
+                width: 57.5%;
+                height: 4%;
+            }
+            .DailyTB-B3 {
+                position: absolute;
+                top: 11%;
+                left: 0;
+                width: 57.5%;
+                height: 89.6%;
+                background: #FFF;
+                overflow: hidden;
+            }
+            .DailyTB-B4 {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 41%;
+                height: 19.5%;
+            }
+            .DailyTB-B5 {
+                position: absolute;
+                top: 21%;
+                right: 0;
+                width: 41%;
+                height: 79.4%;
+                overflow: hidden;
+                background: #FFF;
+            }
+            .DailyTB-B5.shiftup {
+                top: 8px;
+                width: 40%;
+                height: 96.3%;
+                right: 0;
+            }
+            .DailyTB-B5-1{
+                position: absolute;
+                top: 78%;
+                right: 0;
+                width: 40%;
+                height: 20%;
+            }
+            .DailyTB-B6 {
+                position: absolute;
+                top: 8px;
+                left: 0;
+                width: 100%;
+                height: 8%;
+            }
+            .DailyTB-B7 {
+                position: absolute;
+                top: 10%;
+                left: 0;
+                width: 100%;
+                height: 17.5%;
+            }
+            .DailyTB-B8 {
+                position: absolute;
+                top: 28%;
+                left: 0;
+                width: 100%;
+                height: 17.5%;
+            }
+            .DailyTB-B9 {
+                position: absolute;
+                top: 45%;
+                left: 0;
+                width: 100%;
+                height: 17.5%;
+            }
+            .DailyTB-B10 {
+                position: absolute;
+                top: 63%;
+                left: 0;
+                width: 100%;
+                height: 17.5%;
+            }
+            .DailyTB-B11 {
+                position: absolute;
+                top: 81%;
+                left: 0;
+                width: 100%;
+                height: 17.5%;
+            }
+            .DailyTwoRightText {
+                position: absolute;
+                top: 8px;
+                left: 15px;
+                font-size:9pt !important;
+                color: #212121;
+                font-family: JosefinSans !important;
+                font-style: normal;
+                font-weight: 700 !important;
+                line-height: 8px  !important;
+                word-wrap: break-word;
+                text-transform: uppercase;
+            }
+            .ctext-113{
+                left: -1px;
+                top: -5px;
+            }
+            .ctext-114{
+                top: -1px;
+                left: 10px;
+            }
+            .ctext-115{
+                top: -3px;
+                left: 0px;
+            }
+            .DailyTB-B8.LineContinue{
+                top: 27%;
+                height: 18%;
+            }
+            .DailyTB-B9.LineContinue{
+                top: 45%;
+                height: 18%;
+            }
+            .DailyTB-B10.LineContinue{
+                top: 63%;
+                height: 18%;
+            }
+            .DailyTB-B11.LineContinue{
+                top: 81%;
+                height: 17.5%;
+            }
+
+            .TopLeft {
+                position: absolute;
+                top: 36px;
+                left: 0;
+                width: 45%;
+                height: 6%;
+            }
+            .TopLeftDText {
+                top: 8px;
+                left: 15px;
+                font-size: 14px !important;
+            }
+            .TopRight {
+                top: 36px;
+                right: 0;
+                width: 45%;
+                height: 7%;
+            }
+            .BottomRight {
+                position: absolute;
+                bottom: 0;
+                right: 0px;
+                width: 35%;
+                height: 20%;
+            }
+
+            .cdate{
+                display: flex;
+                align-items: baseline;
+            }
+            .DailyDateBTitle{
+                font-size: 12px !important;
+                color: #212121;
+                font-family: JosefinSans !important;
+                font-style: normal;
+                font-weight: 700 !important;
+                line-height: 1 !important;
+                text-transform: uppercase; 
+                margin-right: 5px;
+            }
+            .DailyDateSTitle{
+                font-size:  10px !important;
+                color: #212121;
+                font-family: JosefinSans !important;
+                font-style: normal;
+                font-weight: 700;
+                line-height: 1.2 !important;
+            }
+            .Holiday{
+               font-size:  9px !important;
+               color: #212121;
+               font-family: JosefinSans !important;
+               font-style: normal;
+               font-weight: 400;
+               line-height: 1.2 !important;
+           }
+           .DTQuoteContainer{
+                display: flex;
+                justify-content: inherit;
+                align-items: center;
+                flex-direction: column;
+                padding: 5px;
+                text-align: center;
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #FFF;
+            }
+
+            .DTQuoteContainer .QuoteText{
+                font-size: 14px;
+                font-family: JosefinSans !important;
+                line-height: 1.2
+            }
+            .DTQuoteContainer .author{
+                font-size: 12px;
+                font-family: PTSans !important;
+                line-height: 1;
+                padding-top: 5px;
+            }
+
+            .DTQuoteContainer.RefQuote .QuoteSubContainer{
+                position: absolute;
+                top: 50%;
+                text-align: center;
+                background: #FFF;
+                height: 50%;
+            }
+   
+       </style>
+    </head>
+    <body>
+        <%   
+        const DailyQouteImage = (tab) => {
+            // Get the index for the current type
+            const type = 3;
+            const currentIndex = quoteIndices[type];
+
+            // Get the next quote of the current type
+            const newQuoteList = quoteList.filter((item) => item.type === type);
+            var quote = newQuoteList[currentIndex];
+
+            // Increment the index for the current type
+            quoteIndices[type]++;
+
+            // Reset the index if it exceeds the length of quotes of that type
+            if (quoteIndices[type] >= newQuoteList.length) {
+                quoteIndices[type] = 0;
+            }
+
+            return `<div class='DTQuoteContainer QuoteOnly'><div class='QuoteText'>${quote.quote_text}</div><div class='author'>${quote.author}</div></div>`;
+        }
+        %>
+        <% if(Data.Page=="Left"){ %>
+        <div class="step3Container leftpage">
+            <div class="st3CoverBox">
+              <div  class="st3page">
+
+                <div class="DailyTB-B0">
+                    <% if(Data.selectedWeeks.includes(99)){%>
+                        <img class='FullWidthImg weekquater' src="<%= ImageArr[Data.WeeksQuaterImgId].left_image %>" alt=''/>
+                    <% }%>
+                </div>
+                <div class="DailyTB-B1">
+                    <div class="cdate">
+                      <div class="DailyDateBTitle"><%= Data.currentDay %></div>
+                      <div class="DailyDateSTitle" ml={1}><%= Data.currentMonthDate %></div>
+                    </div>
+                    <div class="Holiday">
+                      <%= Data.Holidays.map(holiday => holiday.title).join(', ') %>
+                    </div>
+                </div>
+                <div class="DailyTB-B2">
+                    <% if(Data.selectedTasks.includes(100)){%>
+                        <img class='FullWidthImg preweek' src="<%= ImageArr[100].left_image %>" alt=''/>
+                    <% }%>        
+                </div>
+                <div class="DailyTB-B3">
+                    <img class='PageSubImages' src="<%= ImageArr[Data.taskImageId].left_image %>" alt=''/>
+                </div>
+                <% if(Data.dailySchedule!=97){%>
+                <div class="DailyTB-B4">
+                <img class='PageSubImages' src="<%= ImageArr[Data.dailySchedule].left_image %>" alt=''/>
+                </div>
+                <% }%>       
+                <div class="<%= (Data.dailySchedule==97)? 'DailyTB-B5 shiftup':'DailyTB-B5'; %>">
+                    <% if(Data.dailySchedule!=97 && Data.selectedTime>0){%>
+                        <img class="PageSubImages" src="<%= ImageArr[Data.selectedTime].left_image %>" alt=''/>
+                    <% }%>
+                    <% if(Data.dailySchedule==97 && Data.selectedTime>0){%>
+                        <img class="PageSubImages" src="<%= ImageArr[Data.selectedTime].right_image %>" alt=''/>
+                    <% }%>
+                </div>
+
+              </div>
+            </div>
+        </div>
+        <% }else{ %>
+        <div class="step3Container rightpage">
+            <div class="st3CoverBox">
+                <div class="st3page">
+
+                    <div class="DailyTB-B6">
+                        <% if(Data.selectedWeeks.includes(98)){
+                             %>
+                             <%- DailyQouteImage(98); %>
+                            
+                        <% }%>
+                    </div>
+                    <div class="<%= (Data.rightCustomRadio1==116)? 'DailyTB-B7 LineContinue':'DailyTB-B7'; %>" >
+                        <img class='FullWidthImg' src="<%= ImageArr[Data.rightCustomRadio1].right_image %>" alt=''/>
+                        <% if((Data.rightCustomRadio1 === 113 || Data.rightCustomRadio1===114 || Data.rightCustomRadio1===115) &&  Data.rightCustomRadio1Text!=""){%>
+                            <div class="DailyTwoRightText ctext-<%=Data.rightCustomRadio1 %>"><%= Data.rightCustomRadio1Text %></div>
+                        <% } %>
+                    </div>
+                    <div class="<%= (Data.rightCustomRadio2==116)? 'DailyTB-B8 LineContinue':'DailyTB-B8'; %>" >
+                        <img class='FullWidthImg' src="<%= ImageArr[Data.rightCustomRadio2].right_image %>" alt=''/>
+                        <% if((Data.rightCustomRadio2 === 113 || Data.rightCustomRadio2===114 || Data.rightCustomRadio2===115) &&  Data.rightCustomRadio2Text!=""){%>
+                            <div class="DailyTwoRightText ctext-<%=Data.rightCustomRadio2 %>"><%= Data.rightCustomRadio2Text %></div>
+                        <% } %>
+                    </div>
+                    <div class="<%= (Data.rightCustomRadio3==116)? 'DailyTB-B9 LineContinue':'DailyTB-B9'; %>" >
+                        <img class='FullWidthImg' src="<%= ImageArr[Data.rightCustomRadio3].right_image %>" alt=''/>
+                        <% if((Data.rightCustomRadio3 === 113 || Data.rightCustomRadio3===114 || Data.rightCustomRadio3===115) &&  Data.rightCustomRadio3Text!=""){%>
+                            <div class="DailyTwoRightText ctext-<%=Data.rightCustomRadio3 %>"><%= Data.rightCustomRadio3Text %></div>
+                        <% } %>
+                    </div>
+                    <div class="<%= (Data.rightCustomRadio4==116)? 'DailyTB-B10 LineContinue':'DailyTB-B10'; %>" >
+                        <img class='FullWidthImg' src="<%= ImageArr[Data.rightCustomRadio4].right_image %>" alt=''/>
+                        <% if((Data.rightCustomRadio4 === 113 || Data.rightCustomRadio4===114 || Data.rightCustomRadio4===115) &&  Data.rightCustomRadio4Text!=""){%>
+                            <div class="DailyTwoRightText ctext-<%=Data.rightCustomRadio4 %>"><%= Data.rightCustomRadio4Text %></div>
+                        <% } %>
+                    </div>
+                    <div class="<%= (Data.rightCustomRadio5==116)? 'DailyTB-B11 LineContinue':'DailyTB-B11'; %>" >
+                        <img class='FullWidthImg' src="<%= ImageArr[Data.rightCustomRadio5].right_image %>" alt=''/>
+                        <% if((Data.rightCustomRadio5 === 113 || Data.rightCustomRadio5===114 || Data.rightCustomRadio5===115) &&  Data.rightCustomRadio5Text!=""){%>
+                            <div class="DailyTwoRightText ctext-<%=Data.rightCustomRadio5 %>"><%= Data.rightCustomRadio5Text %></div>
+                        <% } %>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </body>
+</html>

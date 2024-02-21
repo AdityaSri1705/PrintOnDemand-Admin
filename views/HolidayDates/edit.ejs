@@ -1,0 +1,103 @@
+<%- contentFor('HeaderCss') %>
+
+    <%- contentFor('breadcrumb') %>
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0"><%= holidayData.holiday_title %></h4>
+
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="/admin/holidays/?type_filter=<%= holidayData.holiday_type %>">Holidays</a></li>
+                            <li class="breadcrumb-item"><a href="/admin/holiday-dates/<%= holidayData.holiday_id %>">Holiday dates</a></li>
+                            <li class="breadcrumb-item active">Edit</li>
+                        </ol>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <%- contentFor('body') %>
+
+        <% if (message!="" ) { %>
+            <div class="alert alert-success">
+                <%= message  %>
+            </div>
+        <% } %>
+        <% if (error!="") { %>
+            <div class="alert alert-danger">
+                <%= error %>
+            </div>
+        <% } %>
+        
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Edit Holiday Date</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="/admin/holiday-date/update" method="post" >
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="holiday_id">Holyday <span class="text-danger">*</span></label>
+                                        <select class="form-control" id="holiday_id" name="holiday_id" >
+                                            <% holidayList.forEach(holiday =>{ %>
+                                                <option value="<%= holiday.id %>" <%= holidayData.holiday_id==holiday.id ? 'selected':'' %>><%= holiday.title %></option>
+                                            <% }); %>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="title">Title <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" placeholder="Enter title" id="title" name="title" value="<%= holidayData.title %>" required >
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <%
+                                        const eventDate = new Date(holidayData.event_date);
+                                        const day = eventDate.getDate().toString().padStart(2, '0');
+                                        const month = (eventDate.getMonth() + 1).toString().padStart(2, '0'); // Note: Month is 0-based
+                                        const year = eventDate.getFullYear();
+                                        const formattedDate = `${year}-${month}-${day}`;
+                                        console.log(formattedDate)
+                                        %>
+                                        <label class="form-label" for="event_date">Date <span class="text-danger">*</span></label>
+                                        <input type="date" class="form-control" placeholder="Enter holiday date" id="event_date" name="event_date" value="<%= formattedDate %>" required >
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="subtitle">SubTitle </label>
+                                        <input type="text" class="form-control" placeholder="Enter subtitle" id="subtitle" name="subtitle" value="<%= holidayData.subtitle %>" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-md-6 text-left">
+                                    <a href="/admin/holiday-dates/<%= holidayData.holiday_id %>" class="btn btn-secondary w-md">Back</a>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <input type="hidden" id="id" name="id" value="<%= holidayData.id %>">
+                                    <button type="submit" class="btn btn-primary w-md float-end">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Form Layout -->
+
+
+    <%- contentFor('FooterJs') %>
+    <%- contentFor('BottomJs') %>
+    
